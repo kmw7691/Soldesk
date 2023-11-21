@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\sdedu\Documents\JSPModel2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\sdedu\Documents\JSPModel2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Nov17_1_DSP_DB" path="/Nov17_1_DSP_DB" reloadable="true" source="org.eclipse.jst.jee.server:Nov17_1_DSP_DB">
+      <Context docBase="C:\Users\sdedu\Documents\GitHub\Soldesk\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\sdedu\Documents\GitHub\Soldesk\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Nov17_1_DSP_DB" path="/Nov17_1_DSP_DB" reloadable="true" source="org.eclipse.jst.jee.server:Nov17_1_DSP_DB">
 	<Resource driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory" maxIdle="100" maxTotal="500" name="kwakPool" password="951753" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="minwoo"/>
 </Context></Host>
     </Engine>
