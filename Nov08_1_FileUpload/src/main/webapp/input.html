@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>input.html</title>
+</head>
+<body>
+	<!-- 
+		GET vs POST
+		쓰임이 다름(뭐가 더 좋다 나쁘다 x)
+		URL에 표현이 되면 GET, 그렇지 않으면 POST
+		1.GET - server에서 데이터를 가져와서 보여줄 때 사용
+				데이터의 값이나 내용같은것을 바꾸거나 하지않음
+				단순히 요청<->응답
+		2.POST - server의 데이터를 가져와서 값이나 상태, 내용같은 것을 바꾸거나
+				 개인정보가 있거나(회원가입, 로그인) 지금처럼 파일처리 할때 사용
+	 -->
+	<!-- 
+		파일처리
+			1)POST방식(주소에 데이터를 담는 GET방식의 요청이 파일을 소화하지 못함)
+			2)업로드한 파일을 담을 폴더 확보(webapp->img폴더 생성)
+			3)기존 시스템이 글자의 경우 인코딩, 디코딩 전송이가능
+					파일은 인코딩을 할줄 모름
+					->다른방식(cos.jar)으로 인코딩해서 전송,디코딩,..
+				cos,jar파일 복사(드래그)->web-inf->lib 에 붙여넣기
+	 -->
+	 <!-- 
+	 	enctype="multipart/form-data"
+	 		<form>요소가 파일이나 이미지를 서버로 전송할 때 사용
+	 		enctype : encoding type
+	  -->
+	 <form action="Output" method="post" enctype="multipart/form-data">
+	 	제목 : <input name="title"><p>
+	 	사진 : <input type="file" name="photo"><p>
+	 	기타 : <input type="file" name="etc"><p>
+	 	<button>업로드!</button>
+	 </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>nb.jsp</title>
+</head>
+<body>
+	<table id="nbTbl">
+		<tr>
+			<th colspan="2">숫자야구</th>
+		</tr>
+		<tr>
+			<form action="#">
+			<td class="td1" colspan="2" align="center"></td> 
+			<td class="td1" colspan="2" align="center"></td> 
+			<td class="td1" colspan="2" align="center"></td>
+			</form> 
+		</tr>
+	</table>
+</body>
+</html>

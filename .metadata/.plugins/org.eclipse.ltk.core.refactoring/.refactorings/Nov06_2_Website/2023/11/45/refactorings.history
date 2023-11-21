@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Nov06_2_Website/src/main/webapp/css/나눔손글씨 암스테르담.ttf&apos; to &apos;n.ttf&apos;" description="Rename resource &apos;나눔손글씨 암스테르담.ttf&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/css/나눔손글씨 암스테르담.ttf" name="n.ttf" stamp="1699232839618" updateReferences="true"/>
+</session>

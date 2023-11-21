@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>h4_multimedia.html</title>
+</head>
+<body>
+<!-- 
+	img폴더안에 옮긴 사진 웹에 띄우기
+ -->
+ <img src = "aa.png"><p>
+ <img src = ".../bb.png"><p>
+ <!-- 
+ 	경로! : 내가 사용하고 있는 html파일이 어디있는지 파악하는게 중요
+ 	
+ 	파일경로
+ 		절대경로 : 처음부터 전부 명시
+ 			서울시 강남구 봉은사로 119 성옥빌딩 5층 솔데스크
+ 			실전에서는 불가능
+ 			
+ 		상대경로 : 현재 작업중인 html파일 기준
+ 			**한글파일명은 가급적 사용x
+ 			.. : 한단계 상위 경로로 올라갈때 
+  -->
+ 
+  <!-- 
+  	사이즈조절
+  		사이즈조절은 가급적 안하는게 좋음 > 잘못하면 깨져서 나옴
+  		가로나 세로중에 하나만조절 > 원본비율에 따라 크기조절
+  		단위를 따로 적지않으면 자동으로 픽셀(px)단위
+  		%사용가능 : 브라우저 크기에 따라
+  		사이즈 줄이는건 그나마 ㄱㅊ
+  		사이즈를 키우는건 안하는게 좋음
+   -->
+   <img width = "150px" height="150px"
+  	src = "C:\Users\sdedu\Documents\JSPModel2\Nov03_1_HTML\src\main\webapp\img\aa.png">
+   <p>
+   <img width="50%" src="aa.png">
+   <!-- 
+   	.gif : <img>
+   	.mp4 : <video>
+   	.mp3 : <audio>
+    -->
+    <embed type = "application/pdf" height="500px" src="">
+    <object type = "application/pdf" data="abc.pdf"></object>
+    
+</body>
+</html>

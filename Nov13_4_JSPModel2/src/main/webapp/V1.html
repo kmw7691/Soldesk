@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>V1.html</title>
+<script type="text/javascript" src="KwakValidChecker.js"></script>
+<script type="text/javascript" src="M2.js"></script>
+</head>
+<body>
+<!-- 
+	View : html/jsp
+		ㄴ실제 사용자가 보는 페이지 + 입력 + 출력
+		ㄴ모든 요청은 다시 컨트롤러 쪽으로
+ -->
+	<h1>V1</h1>
+	<form action="C" name="vForm" onsubmit="return checkValid();" method="post">
+		x:<input name="x"><p>
+		y:<input name="y"><p>
+		<button>계산</button>
+	</form>
+	<!-- 
+		유효성검사로 x, y가 필수, 숫자만
+		이 조건들을 만족하지 않으면 C로 못가게
+		M2.js
+	 -->
+</body>
+</html>

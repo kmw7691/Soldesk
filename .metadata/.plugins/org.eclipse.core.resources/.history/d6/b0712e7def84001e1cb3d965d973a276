@@ -1,0 +1,55 @@
+@charset "UTF-8";@charset "UTF-8";
+
+@font-face{
+	font-family: "i";
+	src: url("i.ttf");
+}
+
+body{
+	background-color:pink;
+	margin-top: 0px;
+	margin-left:auto;
+	margin-right:auto;
+	font-family: "i";
+}
+
+#siteTitle{
+	position:fixed;
+	top:-2px;
+	width:100%;
+	height:80px;
+}
+
+#siteTitleArea a{
+	color:teal;
+	font-size: 40pt;
+	font-weight:900;
+	text-decoration: none;
+}
+
+#siteContentArea {
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+	color:white;
+	font-size:30pt;
+	text-shadow: red 0px 0px 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

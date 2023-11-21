@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>nb.jsp</title>
+</head>
+<body>
+	<form action="HomeController">
+		<table id="nbTbl">
+			<tr>
+				<th>숫자야구</th>
+			</tr>
+			<tr>
+				<td align="center"><input id="ip" name="userAns"
+				 maxlength="3" autocomplete="off"></td>
+			</tr>
+			<tr><th class="th1">숫자만 3자리, 중복숙자X</th></tr>
+			<tr><th class="th1"><button>확인</button></th></tr>
+			<tr><th class="th1">${ua }</th></tr>
+			<tr><th class="th1">${s }<button>확인</button></th></tr>
+			<tr><th class="th1">${b }<button>확인</button></th></tr>
+			<tr><th class="th1">${t }<button>확인</button></th></tr>
+			<tr><th class="th1">${r }<button>확인</button></th></tr>
+		</table>
+	</form>
+</body>
+</html>

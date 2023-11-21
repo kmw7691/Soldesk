@@ -1,0 +1,9 @@
+package com.kwak.nov141.bmi;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class BMIM1 {
+	public static void calculate(HttpServletRequest request) {
+		
+	}
+}

@@ -1,0 +1,10 @@
+//nov16_Check.js
+
+function check(){
+	let xBox = document.calcForm.x;
+	let yBox = document.calcForm.y;
+	
+	alert(xBox.value);
+	
+	return true;	
+}

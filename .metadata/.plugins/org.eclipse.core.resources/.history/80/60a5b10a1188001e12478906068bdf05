@@ -1,0 +1,32 @@
+package com.kwak.nov211.banana;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/BananaRegController")
+public class BananaRegController extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("contentPage", "banana/reg.jsp");
+		
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//DB에등록
+		BananaDAO.getBananaDAO().reg(request);
+		
+		//게시판에 나올거 챙기기
+		BananaDAO.getBananaDAO().getBananas(1, request);
+		
+		//등록완료후에 보여줄 페이지
+		request.setAttribute("contentPage", "apple/apple.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+}

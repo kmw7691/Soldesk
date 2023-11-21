@@ -1,0 +1,11 @@
+package com.kwak.nov211.banana;
+
+public class Banana {
+	private String maker;
+	private String location;
+	private int howmany;
+	private String flavor;
+	private String color;
+	private int price;
+	private String introduce; 
+}

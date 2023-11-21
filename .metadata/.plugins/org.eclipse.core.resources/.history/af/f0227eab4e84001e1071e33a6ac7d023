@@ -1,0 +1,7 @@
+package com.kwak.nov163.jstlc;
+
+//Model / DAO
+
+public class JSTLCDataMaker {
+
+}

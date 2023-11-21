@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>유효성검사</title>
+<script type="text/javascript">
+	function checkValid(){
+		//input의 내용을 받아와야
+		let idInput = document.ff.idid;
+		let pwInput = document.ff.pwpw;
+		let pwcheckInput = document.ff.pwcheck;
+		let footInput = document.ff.foot;
+		
+		//alert(idInput);
+		//id는 필수, 최소2~최대10글자
+		if(!idInput.value){
+			alert("ID기재바람");
+			idInput.focus();// 커서 idInput에 갖다놓음
+			return false;
+		} else if(idInput.value.length < 2){
+			alert("ID는 2~10글자");
+			idInput.focus();
+			idInput.value = ""; //기존에썻던거 지우기
+			return false;
+		}
+		//pw는 필수, 최소5~최대10
+		if(!pwInput.value){
+			alert("PW기재바람");
+			pwInput.focus();
+			return false;
+		} else if(pwInput.value.length < 5){
+			alert("PW는 5~10글자");
+			pwInput.focus();
+			pwInput.value = ""; 
+			return false;
+		}
+		
+		//pwcheck 필수, 최소5~최대10 + pw랑 동일한지
+		if(!pwcheckInput.value || pwcheckInput.value.length < 5){
+			alert("제대로 기재 ㄱㄱ");
+			pwcheckInput.focus();
+			pwcheckInput.value="";
+			return false;
+		}
+		//pw와 동일한지
+		if(pwInput.value != pwcheckInput.value){
+			alert("비번다름");
+			pwInput.focus();
+			pwInput.value = ""; 
+			return false;
+		}
+		
+		//pw에 3,6,9중에 하나이상 / h,k중에 하나이상 들어가게
+		let numExist = false; // 숫자가 잇나 체크용
+		let num = "369"; //이중에 하나 이상 있어라 조건용
+		
+		for(var i =0; i< num.length; i++){
+			if(pwInput.value.indexOf(num[i]) !== -1){ //369중 하나라도 있으면
+				numExist = true;
+				break;	//break으로 탈출
+			}
+		}
+		
+		let letterExist = false;
+		let letter="hk";
+		for(var i =0; i< letter.length; i++){
+			if(pwInput.value.indexOf(letter[i]) !== -1){
+				letterExist = true;
+				break;
+			}
+		}
+		//letterExist가 false면 아래 if문에 걸림(조건 미충족)
+		//letterExistㄱ true면 아래 if문에 안걸림(조건 충족)
+		
+		
+		//두 조건다 만족하면 true
+		//아래 if문에서 !true = false ->if(false) <-조건문 안돌아감
+		//=(if에 걸리지않는다)
+		if(!numExist || !letterExist){
+			//만약 걸린다면
+			alert("있어야 할게 없음");
+			return false;
+		}
+		
+		//발치수 필수, 숫자만
+		if(isNaN(footInput.value)){
+			alert('숫자만 ㄱ');
+			footInput.focus();
+			footInput.value="";
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+<!-- 
+	onsubmit : 요청하러 출발해라
+	return true : 개발자의도대로 되면
+	return false : 조건에걸려서 요청x
+ -->
+	 <form action="ㅋㅋㅋㅋㅋ" name="ff" onsubmit="return checkValid();">
+	 	<table border="1">
+			<tr>
+				<td align="right">
+				ID : <input name="idid" maxlength="10" autofocus="autofocus"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+				PW: :<input name="pwpw" maxlength="10" type="password"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+				PW확인: <input name="pwcheck" maxlength="10" type="password"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="left">
+				발사이즈입력:<input name="foot"><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<button>완료</button>
+				</td>
+			</tr>	 	
+	 	</table>
+	 </form>
+	<!-- 
+		유효성 검사 : javascript로 검사해서 개발자가 원하는대로 쓰지않으면
+					애초에 servlet으로 안넘어가게
+	
+		<form>안에
+		id pw pw확인 발사이즈입력칸(input) 버튼
+	 -->
+</body>
+</html>

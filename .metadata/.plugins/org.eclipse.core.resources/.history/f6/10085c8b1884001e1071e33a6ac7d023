@@ -1,0 +1,7 @@
+//nov15_check.js
+
+//alert("check")
+
+function check(){
+	let numBox = document.nbForm.userAns;
+}

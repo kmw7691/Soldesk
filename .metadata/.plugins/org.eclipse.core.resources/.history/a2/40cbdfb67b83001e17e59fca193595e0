@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="NOV15_11_NB">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <property name="context-root" value="NOV15_11_NB"/>
+        <property name="java-output-path" value="/NOV15_11_NB/build/classes"/>
+    </wb-module>
+</project-modules>

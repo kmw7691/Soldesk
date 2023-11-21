@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/*board.css*/
+
+#boardTbl{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+}
+
+#boardTbl .aboard img{
+	max-width: 500px;
+	max-height: 150px;
+	border-radius:30px;
+}
+
+#boardTbl .aboard{
+	float: left;	/*table을 옆으로 정렬시킬 수 있는 방법*/
+	border:#6B66FF solid 3px;
+	border-radius: 10px;
+	margin:10px;
+	font-size:18pt;
+	background-color: transparent;
+	border:none;
+	font-size:15pt;
+	resize: none; 
+	margin-left: 10px;
+	margin-right: 10px;
+	box-shadow: white 0px 0px 10px;
+	max-width: 500px;
+	vertical-align: top;
+	padding-top:30px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.aguestbook img{
+	max-width: 500px;
+	max-height: 150px;
+	border-radius:30px;
+}
+
+.textTd{
+	max-width: 500px;
+	vertical-align: top;
+	padding-top:30px;
+	overflow: hidden;/*max-width를 벗어나는 내용을 숨길때*/
+	white-space: nowrap;/*글자를 어떻게 둘지 정할때 -> 벗어나는 내용 상관없이 한줄로 표시*/
+	text-overflow: ellipsis;/*끝에 잘리는부분 있을때 ...해서 알려줌*/
+}
+
+textarea{
+	background-color: transparent; /*배경 투명하게*/
+	border:none;
+	font-size:15pt;
+	resize: none; 
+	color:white;
+	font-weight: 700;
+}
+
+textarea:focus{ /*마우스로 해당부분 클릭햇을때*/
+	background-color: yellow;
+	/*outline: none;*/
+}

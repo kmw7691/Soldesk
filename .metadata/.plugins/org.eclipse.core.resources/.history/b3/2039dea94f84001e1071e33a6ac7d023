@@ -1,0 +1,12 @@
+package com.kwak.nov163.jstlc;
+
+import javax.servlet.http.HttpServletRequest;
+
+//Model / DAO
+
+public class JSTLCDataMaker {
+	public static void make(HttpServletRequest request) {
+		int[] ar = {123, 465, 78, 90, 2345};
+		request.setAttribute("ar", ar);
+	}
+}

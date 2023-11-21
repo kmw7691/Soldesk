@@ -1,0 +1,5 @@
+package com.kwak.db.manager;
+
+public class KwakDBManager {
+
+}

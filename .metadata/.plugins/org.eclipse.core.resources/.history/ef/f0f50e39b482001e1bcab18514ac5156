@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@font-face{
+	font-family: "n";
+	src: url("n.ttf");
+}
+
+#body{
+	font-family: "n";
+	background-image: url("a.png");
+	background-size: 50%;
+}
+
+#rspTbl{
+	margin-left:auto;
+	margin-right: auto;
+	width : 500px;
+	background-color: yellow 3px 3px 3px;
+	border-spacing: 50%
+}
+
+#rspTbl .th{
+	color:orange;
+	font-size: 30pt;
+	height: 50px;
+}
+
+#rspTbl .td1{
+	background-color:  #D4F4FA;
+	color: blue;
+	font-size: 30pt;
+	height: 40pt;
+}
+
+#img{
+	width: 250px;
+	height : 250px;
+	border: pink solid 5px;
+	border-radius: 20px;
+}
+
+#rspTbl .td2{
+	color: black;
+	font-size: 20pt;
+}
+
+#rspTbl .td3{
+	background-color: #D4F4FA;
+	color: black;
+	font-size: 30pt;
+	height: 50px;
+}

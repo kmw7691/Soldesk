@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>사과게시판</h1>
+	<table id="appleTbl">
+		<tr>
+			<td align="right">${r }
+			<a href="#">등록</a></td>
+		</tr>
+		<tr>
+			<td id="appleBoard" align="center">
+				<table id="appleContext" border="1"><!-- DB에 저장된 데이터나올 곳 -->
+					<tr>
+						<th>지역</th>
+						<th>가격</th>
+					</tr> 
+					<tr class="dataTr">
+						<td>대구</td>
+						<td>5000</td>
+					</tr>
+					<tr class="dataTr">
+						<td>안동</td>
+						<td>3000</td>
+					</tr>
+					<tr class="dataTr">
+						<td>충주</td>
+						<td>4900</td>
+					</tr>
+					<tr class="dataTr">
+						<td>LA</td>
+						<td>12000</td>
+					</tr>
+				</table>
+			</td>	
+		</tr>
+		<tr>
+			<td align="center">
+			<a href="#">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			</td>
+		</tr>
+		<tr class="dataTr">
+			<td align="center">검색</td>
+		</tr>
+	</table>
+</body>
+</html>

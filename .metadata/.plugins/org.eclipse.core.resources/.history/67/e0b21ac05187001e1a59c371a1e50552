@@ -1,0 +1,33 @@
+package com.kwak.nov171.apple;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/AppleRegController")
+public class AppleRegController extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("contentPage", "apple/reg.jsp");
+	
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+	
+	//사과를 DB에 등록하는 기능
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//DB에 등록
+		appleDAO.getAppleDAO().reg(request);
+		
+		//게시판에 나올거 챙기기
+		appleDAO.getAppleDAO().getAllApples(request);
+		appleDAO.getAppleDAO().getApples(1, request);
+		
+		//등록완료후에 보여줄 페이지
+		request.setAttribute("contentPage", "apple/apple.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+
+}

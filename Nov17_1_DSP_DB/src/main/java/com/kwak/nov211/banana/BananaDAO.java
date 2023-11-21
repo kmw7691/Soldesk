@@ -1,0 +1,312 @@
+package com.kwak.nov211.banana;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.kwak.db.manager.KwakDBManager;
+
+import oracle.jdbc.proxy.annotation.Pre;
+
+public class BananaDAO {
+	private int allBananaCount;
+	
+	private static final BananaDAO BANANADAO = new BananaDAO();
+	
+	public BananaDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static BananaDAO getBananaDAO() {
+		return BANANADAO;
+	}
+	
+	//모든 바나나데이터 가져오기
+	public void getAllBananas(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			String sql = "select*from banana order by price";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			ArrayList<Banana> bananas = new ArrayList<Banana>();
+			Banana banana = null;
+			
+			while(rs.next()) {
+				banana = new Banana();
+				banana.setMaker(rs.getString("maker"));
+				banana.setLocation(rs.getString("location"));
+				banana.setHowmany(rs.getInt("homany"));
+				banana.setFlavor(rs.getString("flavor"));
+				banana.setColor(rs.getString("color"));
+				banana.setPrice(rs.getInt("price"));
+				banana.setIntroduce(rs.getString("introduce"));
+				bananas.add(banana);
+			}
+			
+			request.setAttribute("bananas", bananas);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		KwakDBManager.close(con, pstmt, rs);
+	}
+	
+	public void reg(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			request.setCharacterEncoding("utf-8");
+			
+			String maker = request.getParameter("maker");
+			String location = request.getParameter("location");
+			int howmany = Integer.parseInt(request.getParameter("howmany"));
+			String flavor = request.getParameter("flavor");
+			String color = request.getParameter("color");
+			int price = Integer.parseInt(request.getParameter("price"));
+			String introduce = request.getParameter("introduce");
+			
+			String sql = "insert into banana values("
+					+ "?, ?, ?, ?, ?, ?, ?)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, maker);
+			pstmt.setString(2, location);
+			pstmt.setInt(3, howmany);
+			pstmt.setString(4, flavor);
+			pstmt.setString(5, color);
+			pstmt.setInt(6, price);
+			pstmt.setString(7, introduce);
+			
+			if(pstmt.executeUpdate() == 1) {
+				request.setAttribute("r", "[등록성공]");
+				allBananaCount++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "[등록실패]");
+		}
+		KwakDBManager.close(con, pstmt, null);
+	}
+	
+	//총바나나데이터갯수
+	public void countBananas() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			String sql = "select count(*) from banana";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			allBananaCount = rs.getInt("count(*)");
+			System.out.println(allBananaCount);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		KwakDBManager.close(con, pstmt, rs);
+	}
+	
+	public void getBananas(int pageNo, HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			int bananaPerPage = 5;
+			
+			int pageCount = (int) Math.ceil(allBananaCount / (double) bananaPerPage);
+			request.setAttribute("pageCount", pageCount);
+			
+			
+			int start = (bananaPerPage * (pageNo - 1) + 1);
+			int end = (pageNo == pageCount) ? allBananaCount : (start + bananaPerPage - 1);
+
+			String sql = "select * from( "
+					+ " select rownum as rn, maker, location, howmany, color, flavor, price, introduce "
+					+ "	from( "
+					+ "		select * "
+					+ "			from Banana order by price "
+					+ "		) "
+					+ " ) "
+					+ " where rn >= ? and rn <= ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			rs = pstmt.executeQuery();
+			
+			ArrayList<Banana> bananas = new ArrayList<Banana>();
+			Banana banana = null;
+			
+			while(rs.next()) {
+				bananas.add(new Banana(
+							rs.getString("maker"),
+							rs.getString("location"),
+							rs.getInt("howmany"),
+							rs.getString("flavor"),
+							rs.getString("color"),
+							rs.getInt("price"),
+							rs.getString("introduce"))
+						);
+			}
+			request.setAttribute("bananas", bananas);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		KwakDBManager.close(con, pstmt, rs);
+	}
+	public boolean getBananaDetail(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			String location = request.getParameter("location");
+			
+			String sql = "select*from banana where location = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, location);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				Banana banana = new Banana();
+				banana.setMaker(rs.getString("maker"));
+				banana.setLocation(rs.getString("location"));
+				banana.setHowmany(rs.getInt("howmany"));
+				banana.setFlavor(rs.getString("flavor"));
+				banana.setColor(rs.getString("color"));
+				banana.setPrice(rs.getInt("price"));
+				banana.setIntroduce(rs.getString("introduce"));
+				request.setAttribute("banana", banana);
+				
+				return true;
+			}
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			KwakDBManager.close(con, pstmt, rs);
+		}
+	}
+	
+	public boolean update(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			request.setCharacterEncoding("utf-8");
+			
+			String maker = request.getParameter("maker");
+			String location = request.getParameter("location");
+			int howmany = Integer.parseInt(request.getParameter("howmany"));
+			String flavor = request.getParameter("flavor");
+			String color = request.getParameter("color");
+			int price = Integer.parseInt(request.getParameter("price"));
+			String introduce = request.getParameter("introduce");
+			
+			String sql = "update banana set location = ?, howmany = ?, flavor = ?, "
+							+ "	color = ?, price = ?, introduce= ? "
+							+ "	where maker = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, location);
+			pstmt.setInt(2, howmany);
+			pstmt.setString(3, flavor);
+			pstmt.setString(4, color);
+			pstmt.setInt(5, price);
+			pstmt.setString(6, introduce);
+			pstmt.setString(7, maker);
+			
+			if(pstmt.executeUpdate() == 1) {
+				request.setAttribute("r", "수정성공");
+				return true;
+			} else {
+				request.setAttribute("r", "수정실패");
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "수정실패");
+			return false;
+		} finally {
+			KwakDBManager.close(con, pstmt, null);
+		}
+	}
+	
+	public void delete(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			String location = request.getParameter("location");
+			String sql = "delete from banana where location = ?";
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, location);
+			
+			if(pstmt.executeUpdate() == 1) {
+				request.setAttribute("r", "삭제성공");
+				allBananaCount--;
+			} else {
+				request.setAttribute("r", "삭제실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "삭제실패");
+		}
+		KwakDBManager.close(con, pstmt, null);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

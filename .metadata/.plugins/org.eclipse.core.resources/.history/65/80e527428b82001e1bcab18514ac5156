@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BMIV1.html</title>
+<script type="text/javascript" src="KwakValidChecker.js"></script>
+<script type="text/javascript" src="BMIM2.js"></script>
+</head>
+<body>
+	<form action="HomeController" name="bmiForm" method="post" 
+			enctype="multipart/form-data" onsubmit="return checkValid();">
+		<table border="1">
+		<tr><th colspan="2">BMI검사</th></tr>
+		<tr>
+			<td align="center">이름 : <input name="name" placeholder="필수" maxlength="10" autofocus="autofocus" autocomplete="off"></td>
+		</tr>
+		<tr>
+			<td align="center">키 : <input name="height" placeholder="필수" autocomplete="off"></td>
+		</tr>
+		<tr>
+			<td align="center">몸무게 : <input name="weight" placeholder="필수" autocomplete="off"></td>
+		</tr>
+		<tr>
+			<td align="center">사진 : <input name="photo" type="file"></td>
+		</tr>
+			<tr><td><button>결과확인</button></td></tr>
+		</table>
+	</form>
+</body>
+</html>

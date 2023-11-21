@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/*banana.css*/
+
+#bananaTbl{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 80px;
+	width:40%;
+	border: teal solid 3px;
+}
+
+#bananaTbl td{
+	border:teal solid 3px;
+}
+
+#bananaTbl a{
+	color: black;
+	font-size:20pt;
+}
+
+#bananaBoard{
+	height:40px;
+}
+
+.dataTr:hover{
+	background-color: black;
+}
+
+
+#bananaContext{
+	margin-left: auto;
+	margin-right: auto;
+	width:300px;
+	text-align:center;	
+}
+
+#bananaContext th{
+	background-color: teal;
+	width:50%;
+}
+
+#bananaContext td{
+	width:50%;
+	cursor: pointer;
+}
+	

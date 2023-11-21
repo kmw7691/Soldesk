@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+/*BMIInput.css*/
+
+@font-face{
+	font-family: "n";
+	src: url("n.ttf");
+}
+
+body{
+	font-family: "n";
+}
+
+#bmiTbl{
+	margin-left: auto;
+	margin-right: auto;
+	background-color:pink;
+	width:500px;
+	height: 500px;
+	border: teal solid 5px;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+#bmiTbl th{
+	font-size : 30pt;
+	color:teal;
+	text-shadow: white 0px 0px 5px;
+}
+
+#bmiTbl .td{
+	width:50%;
+	font-size: 20pt;
+	font-weight: 600;
+	text-align: center;
+	color:teal;
+}
+
+#bmiTbl .textType{
+	margin-bottom: auto;
+	outline: none;
+	text-align: center;
+	border : white solid 3px;
+	border-radius: 5px;
+	background-color: transparent;
+	font-size: 15pt;
+}
+
+#bmiTbl .textType::focus{
+	border:teal solid 3px;
+}
+
+#bmiTbl .textType::placeholder{
+	color:teal;
+	font-weight: 500;
+}
+
+#bmiTbl .photoType{
+	margin-left: auto; 
+	margin-right: auto; 
+	color:teal;
+	width:200px;
+}
+
+#bmiTbl button{
+	background-color: transparent;
+	border: white solid 3px;
+}
+
+#bmiTbl button:hover{
+	text-decoration: underline;
+	color:black;
+	font-size: 20pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

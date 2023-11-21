@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>reg.jsp</title>
+
+</head>
+<body>
+	<h1>Apple</h1><!-- DBtable의 칼럼이 뭐가잇나 생각해서 -->
+	<form action="#" name="appleForm" onsubmit="return check();">
+		지역 : <input name="a_location" autocomplete="off" 
+		autofocus="autofocus" placeholder="지역"><hr>
+		색 : <select name="a_color">
+				<option>빨강</option>
+				<option>초록</option>
+				<option>파랑</option>
+				<option>검정</option>
+				<option>노랑</option>
+			</select><hr>
+		맛 : <select name="a_flavor">
+				<option>단맛</option>
+				<option>쓴맛</option>
+				<option>신맛</option>
+				<option>매운맛</option>
+				<option>단맛</option>
+			</select><hr>
+		가격 : <input name="a_price" autocomplete="off" placeholder="숫자만입력"><hr><p>
+		설명 : <textarea name="a_introduce" maxlength="80" 
+				autocomplete="off" placeholder="5자 이상"></textarea><hr>
+		<button>등록</button>
+	</form>
+</body>
+</html>

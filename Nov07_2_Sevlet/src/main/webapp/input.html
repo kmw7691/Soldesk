@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>input.html</title>
+</head>
+<body>
+	<!-- 여기서 ctrl + f11 로 실행-->
+	<!--<a href="Calculator?x=10&y=5">10,5계산하기</a> -->
+	<hr>
+	<!-- 
+		form : form내부에 있는 button태그 클릭하면
+			   action자리에 쓴 쪽으로 요청을해줌
+			   
+			   조건) form 내부에 있는 input의 속성값으로 name을 줘서 -> 요청 파라미터명
+			   		*요청파라미터 : Servlet의 getParameter("요청파라미터명");
+			   		input안에 쓴 내용을 값으로 보내줌	
+	 -->
+	<form action="Calculator"><!-- action엔 연결될 Servlet이름 넣어주기 -->
+		x:<input name="x"><p> <!-- servlet의 getParameter부분과 이름 동일하게 -->
+		y:<input name="y"><p><!-- java변수명과는 철저히 별개 -->
+		<button>계산</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,9 @@
+package com.kwak.nov171.apple;
+
+public class Apple {
+	private String a_location;
+	private String a_color;
+	private String a_flavor;
+	private int a_price;
+	private String a_introduce;
+}

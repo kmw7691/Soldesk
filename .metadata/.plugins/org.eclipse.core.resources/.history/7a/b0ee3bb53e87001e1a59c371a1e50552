@@ -1,0 +1,11 @@
+//appleRegCheck.js
+
+//alert("check")
+
+function check(){
+	let lBox = document.appleForm.
+	let cBox
+	let fBox
+	let pPox
+	let iBox
+}

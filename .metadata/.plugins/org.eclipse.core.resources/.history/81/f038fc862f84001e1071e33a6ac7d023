@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index.jsp</title>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<table id="siteTbl">
+		<tr><th align="right">2023년 11월 16일 목요일</th></tr>
+		<tr>
+			<td id="siteMenu">
+				<a href="HomeController">Home</a>
+				<a href="AController">A</a>
+				<a href="#">B</a>
+				<a href="#">C</a>
+			</td>
+		</tr>
+		<tr>
+			<td id="siteContent"><jsp:include page="${contentPage }" /></td>
+		</tr>
+		<tr>
+			<td>
+				<img src="css/aa.png" id="img1">
+				<img src="css/bb.png" id="img2">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

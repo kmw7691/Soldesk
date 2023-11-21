@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BMIV1.html</title>
+<script type="text/javascript" src="KwakValidChecker.js"></script>
+<script type="text/javascript" src="BMIM2.js"></script>
+</head>
+<body>
+	<form action="HomeController" name="bmiForm" 
+		onsubmit="return checkValid();" method="post">
+		이름 : <input name="name"><p>
+		키 : <input name="height"><p>
+		몸무게 : <input name="weight"><p>
+		사진 : <input name="photo" type="file">
+		<button>결과확인</button>
+	</form>
+</body>
+</html>

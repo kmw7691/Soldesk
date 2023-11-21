@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>input.html</title>
+<link rel="stylesheet" href="CSS/input.css">
+</head>
+<body>
+	<!-- 
+		 회원가입페이지
+		 id
+		 pw
+		 성별 - 남녀중에 하나만
+		 지역	
+		 	<select>
+		 		<option>서울</option>
+		 		<option>인천</option>
+		 		<option>경기</option>
+		 		<option>...</option>
+		 	</select>
+		 취미(복수선택)
+		 자기소개(textarea)
+		 가입버튼을누르면 -> 내가 입력한 정보들이 새로운 페이징서 출력되게 + css
+	 -->
+	<form action="Output">
+		<h1 align="center">회원가입페이지</h1>
+		<table border="1" id="joinTbl">
+			<tr>
+				<td align="center" class="td1">
+				ID :<input name="id" autofocus="autofocus" autocomplete="off"
+				placeholder="필수, 4~8글자" maxlength="8" class="textType">
+				</td>
+			
+				<td align="center" class="td1">
+				PassWord :<input name="password" autofocus="autofocus" autocomplete="off"
+				placeholder="필수, 영문/숫자혼합" class="textType">
+				</td>
+			</tr>
+			<tr>
+					<td align="center" class="td1">성별</td> 
+				<td>
+					<input type="radio" name="gender" value="남자" checked="checked"> 남자
+					<input type="radio" name="gender" value="여자"> 여자
+				</td>
+			</tr>
+			<tr>
+					<td align="center" class="td1">지역</td>
+				<td>
+					 <select name="location" class="radioTd">
+						<option class="test">서울</option>
+						<option class="test">경기</option>
+						<option class="test">인천</option>
+						<option class="test">대구</option>
+						<option class="test">부산</option>
+					</select><br>
+				</td>
+			</tr>
+			<tr>
+					<td align="center" class="td1">취미</td> 
+				<td>
+					<table id="checkboxTbl">
+						<tr>
+							<td>
+								 <input type="checkbox" value="게임" name="habbit">게임
+								 <input type="checkbox" value="운동" name="habbit">운동
+								 <input type="checkbox" value="영화" name="habbit"> 영화
+								 <input type="checkbox" value="독서" name="habbit">독서
+								 <input type="checkbox" value="산책" name="habbit">산책
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+					<td align="center" class="td1">자기소개</td> 
+				<td>
+					<textarea name="myself"></textarea><br>
+				</td>
+			</tr>
+			<tr><td colspan="2">
+				<button>완료</button>
+			</td></tr>
+		</table>
+		<br>
+	</form>
+</body>
+</html>

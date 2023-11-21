@@ -1,0 +1,165 @@
+package com.kwak.nov171.apple;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.kwak.db.manager.KwakDBManager;
+
+//메소드는 메소드명 기준 알파벳순 <- 국룰
+
+
+public class appleDAO {
+	
+	private int allAppleCount;
+	
+	private static final appleDAO APPLEDAO = new appleDAO();
+	
+	public appleDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	//AppleController에서는 getAppleDAO로만 appleDAO파일 접근 가능
+	public static appleDAO getAppleDAO() {
+		return APPLEDAO;
+	}
+	
+	//모든 사과데이터 가져오기 - Read(select)
+	public void getAllApples(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			//db연결
+			con = KwakDBManager.connect("kwakPool");
+			
+			//sql문 작성
+			String sql = "select*from nov17_apple order by a_price";
+			pstmt = con.prepareStatement(sql);
+			
+			//C U D : pstmt.executeUpdate()로 실행 -> 데이터가 몇개 영향 받앗는지
+			//R : pstmt.executeQuery()로 실행 >> select의 결과가 ResultSet으로 보내짐
+			rs = pstmt.executeQuery(); 
+			
+			//rs에 있는 것들을 담을 빈 ArrayList 생성
+			ArrayList<Apple> apples = new ArrayList<Apple>();
+			Apple apple = null;
+			
+			while(rs.next()) {
+				apple = new Apple(); //새 객체하나 꺼내기
+				apple.setA_location(rs.getString("a_location"));
+				apple.setA_color(rs.getString("a_color"));
+				apple.setA_flavor(rs.getString("a_flavor"));
+				apple.setA_price(rs.getInt("a_price"));
+				apple.setA_introduce(rs.getString("a_introduce"));
+				apples.add(apple); //javabean하나 원성되면 ArrayList에 담기
+			}
+			
+			//다 담긴 ArrayList를 jsp파일에 풀기 위해 >> setAttribute
+			request.setAttribute("apples", apples);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		KwakDBManager.close(con, pstmt, rs);
+		//dao <-> controller <->jsp
+	}
+
+	//사과 등록하기 - C(create) - insert
+	public void reg(HttpServletRequest request) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			//web에서 작성한 데이터 가져오기
+			request.setCharacterEncoding("utf-8");
+			
+			//apple폴더 안에 있는 reg.jsp의 name부분 받아오기
+			String location = request.getParameter("a_location");
+			String color = request.getParameter("a_color");
+			String flavor = request.getParameter("a_flavor");
+			int price = Integer.parseInt(request.getParameter("a_price"));
+			String introduce = request.getParameter("a_introduce").replace("\r\n", "<br>");
+			
+			//db sql문 작성
+			String sql = "insert into nov17_apple values("
+						+ "?, ?, ?, ?, ?)";
+			
+			//db총괄 매니저
+			pstmt = con.prepareStatement(sql);
+			
+			//sql문 완성 -> ?채우기
+			pstmt.setString(1, location);
+			pstmt.setString(2, color);
+			pstmt.setString(3, flavor);
+			pstmt.setInt(4, price);
+			pstmt.setString(5, introduce);
+			
+			if(pstmt.executeUpdate() == 1) {
+				request.setAttribute("r", "[등록 성공]");
+				allAppleCount++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("r", "[등록 실패]");
+		}
+		KwakDBManager.close(con, pstmt, null);
+	}
+
+	//총 사과데이터가 몇개인가
+	public void countApples() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

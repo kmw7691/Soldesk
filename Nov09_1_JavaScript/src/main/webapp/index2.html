@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index2.html</title>
+<script type="text/javascript">
+	function goHaha(){
+		//1.변수에 input에 쓰인 내용을 담기
+		//document : 이 html문서 자체
+		let iiInput = document.getElementById("ii");//id가 ii인것
+		//alert(iiInput);
+		let iiInputVal = iiInput.value;	//input에 입력한 내용이보임
+		//alert(iiInputVal);
+		location.href="ㅋㅋㅋ?ii=" + iiInputVal;
+		//http://localhost/Nov09_1_JavaScript/ㅋㅋㅋ?ii=hi
+	}	
+</script>
+
+</head>
+<body>
+	<input id="ii">
+	<button ondblclick="goHaha();">확인</button>
+	<!-- <button onclick="goHaha();">확인</button> -->
+	<!-- 
+		input에 값 넣어서
+		button 더블클릭하면 ㅋㅋㅋ?ii=hi로 Get방식 요청
+		<form> : 입력받아서 요청할때 필수품x
+		<form> : 입력받아서 요창할때 편함
+		
+		주소입력 : GET
+		<a> : GET
+		<form> + <button> : GET/POST
+		JavaScript : GET
+	 -->
+</body>
+</html>

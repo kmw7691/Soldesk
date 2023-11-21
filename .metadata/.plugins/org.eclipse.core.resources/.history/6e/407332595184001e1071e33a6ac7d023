@@ -1,0 +1,46 @@
+package com.kwak.nov163.jstlc;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+//Model / DAO
+
+public class JSTLCDataMaker {
+	public static void make(HttpServletRequest request) {
+		int[] ar = {123, 465, 78, 90, 2345};
+		request.setAttribute("ar", ar); 
+	}
+	
+	//ArrayList이용
+	//[사람] 이름 나이 키 몸무게 한세트를 4~5개넣고
+	//jstl 반복 사용해서 정보 뽑기
+	
+	
+	public static void info(HttpServletRequest request) {
+		ArrayList<String> human = new ArrayList<>(); 
+		
+		human.add("김길동");
+		human.add("23");
+		human.add("172.3");
+		human.add("72.3");
+		human.add("-------");
+		human.add("박길동");
+		human.add("13");
+		human.add("145.3");
+		human.add("45.3");
+		human.add("-------");
+		human.add("나길동");
+		human.add("28");
+		human.add("182.3");
+		human.add("82.3");
+		human.add("-------");
+		human.add("최길동");
+		human.add("32");
+		human.add("165.3");
+		human.add("85.3");
+		human.add("-------");
+		
+		request.setAttribute("human", human);
+	}
+}

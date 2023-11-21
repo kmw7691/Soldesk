@@ -1,0 +1,27 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dbc.jsp</title>
+</head>
+<body>
+<h1>dbc</h1>
+<%
+	Connection con = null;
+try{
+	//1.
+	Class.forName("oracle.jdbc.diver.OracleDriver");
+	String addr = "jdbc:oracle:thin:@localhost:1521:xe";
+	con = DriverManager.getConnection(addr, "minwoo", "1");
+	String result = "성공";
+} catch (Exception e){
+	
+}
+
+%>
+</body>
+</html>

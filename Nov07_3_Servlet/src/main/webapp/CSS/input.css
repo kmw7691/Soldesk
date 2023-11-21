@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+/*input.css*/
+
+@font-face{
+	font-family: "n";
+	src:url("n.ttf");
+}
+
+body{
+	font-family: "n";
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#joinTbl{
+	margin-left:auto;
+	margin-right: auto;
+	background-color: pink;	
+	font-size:15pt;
+	border-radius: 10px;
+	box-shadow: purple 3px 3px 5px;
+}
+
+#joinTh{
+	font-size:25pt;
+	text-shadow: white 0px 0px 10px;
+	color:purple;
+}
+
+#joinTbl .td1{
+	margin-bottom: 10px;
+	color:#A566FF
+}
+
+#joinTbl .textType{
+	margin-bottom: 10px;
+	outline:none;
+	text-align: center;
+	border:white solid 3px;
+	border-radius: 10px;
+	background-color: transparent;
+	color: #A566FF;
+	font-size:13pt;	
+	font-weight:600
+}
+
+#joinTbl .textType:placeholder{
+	color:white;
+}
+
+#joinTbl .textType:focus{
+	border:black dashed 3px;
+}
+
+
+#joinTbl button{
+	border:none;
+	background-color: transparent;
+	color:#A566FF;
+	font-size:15pt;
+	cursor:pointer;
+}
+
+#joinTbl button:hover{
+	text-decoration: underline;
+	
+}
+
+#joinTbl .radioTd{
+	width:100px;
+	color:white;
+	background-color:pink;
+	text-align: center;
+	font-size:15pt;
+}
+
+#joinTbl .radioTd .test{
+	background-color: pink;
+}
+
+input[type=radio]{
+	accent-color:red;
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+

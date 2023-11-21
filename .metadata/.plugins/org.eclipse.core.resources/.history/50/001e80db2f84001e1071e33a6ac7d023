@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+@font-face{
+	font-family: "n";
+	src: url("n.ttf");
+}
+
+body{
+	background-color:blue;
+	background-image: url("chirstmas.png");
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: cover;
+	font-family: "n";
+}
+
+#siteTbl{
+	margin-left: auto;
+	margin-right: auto;
+	width:1200px;
+}
+
+#siteTbl th{
+	color:white;
+	font-size: 40pt;
+	font-weight:700;
+	padding-right: 20px;
+	height:80px;
+	text-shadow: red 0px 0px 10px;
+}
+
+#siteMenu a{
+	text-decoration: none;
+	color:white;
+	font-size:30pt;
+	font-weight: 500;
+	margin-left: 100px;
+	margin-right: 100px;
+	text-shadow: red 0px 0px 5px;
+}
+
+#siteCotent{
+	padding:20px;
+	color:white;
+	font-family:"n";
+}
+
+#img1{
+	width:300px;
+	height: 300px;
+	position: absolute;
+	right:0px;
+	bottom: 0px;
+	background-color: transparent;
+	opacity: 0.5;
+}
+
+#img2{
+	width:300px;
+	height: 300px;
+	position: absolute;
+	left:100px;
+	bottom: 0px;
+	background-color: transparent;
+	opacity: 0.5;
+}
+
+
+#homeTbl1{
+	text-shadow: red 0px 0px 5px;
+	margin-right: 80px;
+	font-size: 20pt;
+}
+
+#homeTbl2{
+	text-shadow: red 0px 0px 5px;
+	margin-left:650px;
+	font-size: 10pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>detail.jsp</title>
+</head>
+<body>
+	<h1>Apple Information</h1>
+	지역 : <input readonly="readonly" name="a_location" value="${apple.a_location }">
+	색 : <input autocomplete="off" name="a_color" value="${apple.a_color }">
+	맛 : <input autocomplete="off" name="a_flavor" value="${apple.a_flavor }">
+	가격 : <input autocomplete="off" name="a_price" value="${apple.a_price }">
+	설명 : <textarea autocomplete="off" maxlength="80" name="a_introduce">${apple.a_ introduce}</textarea>
+	
+</body>
+</html>

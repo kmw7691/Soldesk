@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/*photo.css*/
+
+#photoTbl{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+}
+
+#photoTbl .aimage img{
+	max-width:150px;
+	max-height:150px;
+	box-shadow: gray 0px 0px 10px;
+}
+
+#photoTbl .aimage{
+	float: left;	/*table을 옆으로 정렬시킬 수 있는 방법*/
+	border:#6B66FF solid 3px;
+	border-radius: 10px;
+	margin:10px;
+	font-size:18pt;
+	margin-left: 10px;
+	margin-right: 10px;
+	box-shadow: white 0px 0px 10px;
+}

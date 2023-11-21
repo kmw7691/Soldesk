@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index.html</title>
+<script type="text/javascript" src="KwakValidChecker.js"></script>
+<script type="text/javascript">
+	function checkValid(){
+		//			document.form이름.input이름
+		let idBox = document.ff.id;
+		let pwBox = document.ff.pw;
+		let pwChkBox = document.ff.pwChk;
+		let footBox = document.ff.foot;
+		let photoBox = document.ff.photo;
+		//alert(idBox.value);
+		
+		if(isEmpty(idBox) || atLeastLetter(idBox,5) || containsAnother(idBox)){
+			alert("Please fill in your ID Properly");
+			idBox.value="";
+			idBox.focus();
+			return false;
+		} else if(isEmpty(pwBox) || atLeastLetter(pwBox,5) 
+								 || notEqualPw(pwBox, pwChkBox)
+								 || notContains(pwBox, "1234567890")
+								 || notContains(pwBox, "abcdefghijklmnopqrstuvwxyz") 
+								 || notContains(pwBox, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+								 || notContains(pwBox, "!@#$%^&*()_<>")){
+			alert("Please fill in your PW Properly");
+			pwBox.value="";
+			pwBox.focus();
+			return false;
+		} 
+		//발사이즈 : 필수, 세자리이상, 숫자만
+		else if(isEmpty(footBox) || atLeastLetter(footBox, 3)
+								 || isNotNumber(footBox)){
+			alert("Please fill in your footsize Properly");
+			footBox.value="";
+			footBox.focus();
+			return false;
+		}
+		
+		//사진 : 필수, gif/png/jpg아니면안댐
+		else if(isEmpty(photoBox) || isNotType(photoBox, "jpg")
+								  && isNotType(photoBox, "png")
+								  && isNotType(photoBox, "gif")){
+			alert("Please fill in your photo Properly");
+			photoBox.value="";
+			return false;
+		}
+		
+		return true;
+	}
+</script>
+</head>
+<body>
+	<!-- 
+		form + 버튼
+		ID PW PWChk 사진
+	 -->
+	 <form action="ㅋㅋㅋㅋ" name="ff" onsubmit="return checkValid();">
+	 	<table border="1">
+			<tr>
+				<td align="right">
+				ID : <input name="id" maxlength="10" autofocus="autofocus" autocomplete="off" placeholder="필수, 5~10글자, 한글/특문x"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+				PW: :<input name="pw" maxlength="10" type="password"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+				PWCheck: <input name="pwChk" maxlength="10" type="password"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+				발사이즈입력:<input name="foot" maxlength="3"><br>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+				사진 : <input type="file" name="photo"><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<button>완료</button>
+				</td>
+			</tr>	 	
+	 	</table>
+	 </form>
+</body>
+</html>

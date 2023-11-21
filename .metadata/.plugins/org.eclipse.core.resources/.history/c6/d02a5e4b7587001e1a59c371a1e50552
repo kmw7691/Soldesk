@@ -1,0 +1,68 @@
+--사과테이블
+--지역 a_location, PK  
+--색 a_color 맛 a_flavor 가격a_price 소개a_introduce
+--데이터 4~5개 삽입
+
+drop table nov17_apple cascade constraint purge;
+
+create table nov17_apple(
+	a_location varchar2(5 char) primary key,
+	a_color varchar2(10 char) not null,
+	a_flavor varchar2(10 char) not null,
+	a_price number(6) not null,
+	a_introduce varchar(80 char) not null
+);
+
+truncate table nov17_apple;
+
+insert into nov17_apple values('대구', '빨강', '단맛', '5000', '대구사과');
+insert into nov17_apple values('충주', '초록', '쓴맛', '4000', '충주사과');
+insert into nov17_apple values('청주', '파랑', '신맛', '3000', '청주사과');
+insert into nov17_apple values('부산', '검정', '매운맛', '2500', '부산사과');
+insert into nov17_apple values('경주', '노랑', '단맛', '3500', '경주사과');
+
+select*from(
+select rownum as rn, a_location, a_color, a_flavor, a_price, a_introduce 
+	from ( 
+		select*
+			from nov17_apple order by a_price
+		)
+)
+where rn >= 3 and rn <= 6;
+
+
+
+select*from nov17_apple;
+
+--총데이터가 몇개인지 조회
+select count(*) from nov17_apple;
+
+
+
+
+update nov17_apple set a_color='빨강', a_flavor ='단맛', a_price = 2000,
+						a_introduce='LA사과!!!' where a_location='LA';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

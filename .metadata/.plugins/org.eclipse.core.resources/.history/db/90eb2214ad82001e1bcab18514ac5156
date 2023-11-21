@@ -1,0 +1,12 @@
+package com.kwak.nov142.el;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class Model {
+	public static void multiply(HttpServletRequest request) {
+		int x = Integer.parseInt(request.getParameter("x"));
+		int y = Integer.parseInt(request.getParameter("y"));
+		int z = x * y;
+		request.setAttribute("z", z);
+	}
+}

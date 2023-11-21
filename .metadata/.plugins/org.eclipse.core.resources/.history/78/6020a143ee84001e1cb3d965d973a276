@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index.jsp</title>
+<link rel="stylesheet" href="css/index.css">
+<%--
+<script type="text/javascript" src="JS/KwakValidChecker.js"></script>
+<script type="text/javascript" src="JS/nov16_Check.js"></script>
+--%>
+
+</head>
+<body>
+	<table id="siteTitle">
+		<tr><th id="siteTitleArea" align="center">
+			<a href="HomeController"></a>Title</th></tr>
+		<tr>
+			<td id="siteContent"><jsp:include page="${contentPage }" /></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td id="siteMenuArea" align="center">
+				<hr>
+				<a href="#">Apple</a>
+				<a href="#">Banana</a>
+				<a href="#">Cherry</a>
+				<a href="#"></a>
+				<hr>
+			</td>
+		</tr>
+		<tr><!-- jsp:include로 구멍뚫어놓은곳을 el처리 했을때 모든 컨트롤러에서 다 채워줘야댐 -->
+		</tr>
+		<tr>
+			<td>
+				<img src="css/aa.png" id="img1">
+				<img src="css/bb.png" id="img2">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

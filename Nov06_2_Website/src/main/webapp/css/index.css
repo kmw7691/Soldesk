@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/*index.css*/
+
+/*폰트등록*/
+@font-face{
+	/*CSS에 추가(IE에서는 안먹힘)*/
+	font-family: "n";
+	src:url("n.ttf");
+}
+
+/*전체적인 설정을 미리 해두겠다*/
+body{
+	/*background-color:purple; 연결되엇는지 확인용*/
+	font-family: "n";/*폰트 등록 여러개 가능, 기본글씨체는 이걸로 하겟다~*/
+	color:white; /*글씨 색*/
+	background-image: url("aaaaa.png");/*배경이미지 넣기*/
+	background-repeat: no-repeat; /*배경이미지 반복 없애기*/
+	/*background-size: cover; /*배경이미지 꽉차게*/
+	background-size: 2000px 1000px; /*사이즈조절 : 가로 세로*/
+	/*html 기본 여백 없애기*/
+	margin:0px;
+	padding: 0px;
+	
+	/*배경이미지를 고정*/
+	background-attachment: fixed; /*fixed : 스크롤시 배경이 고정되게*/
+}
+
+#siteTitleArea{
+	width: 100%; /*넓이를 화면 가로로 꽉차게*/
+}
+
+#siteMenuArea{
+	font-size:30pt;
+	color:#B7F0B1;
+	background-color: #CCA63D;
+	width:100%; 
+}
+
+#siteMenuArea td{
+	width:25%;
+	margin:0px;
+	padding: 0px;
+}
+
+#siteMenuArea a{
+	text-decoration: none;
+	color:#F6F6F6;
+	font-weight: 700;
+	/*애니메이션 효과*/
+	transition: all 0.5s ease-in;
+}
+
+#siteMenuArea a:hover{
+	font-size:35pt;
+	text-decoration: blink;
+	text-shadow: gray 0px 0px 10px;
+}
+
+#siteTitle{
+	font-size:30pt;
+	color:#B7F0B1;
+	font-weight: 900;
+	text-shadow: white 0px 0px 10px;/*색 x좌표 y좌표 퍼짐정도*/
+}
+
+#siteContentArea{
+	width:500px;
+	/*가운데정렬*/
+	margin-left: auto;
+	margin-right: auto;
+	/*상단에서 좀 띄고싶어서*/
+	margin-top:200px;
+}
+
+#siteContentArea{
+	box-shadow: black 5px 5px 5px;	
+	/*		색	종류	  두께*/
+	border:red solid 10px; /*solid실선 dotted점선 dashed double*/
+	border-radius: 10px; /*모서리 둥글게*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

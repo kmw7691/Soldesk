@@ -1,0 +1,9 @@
+//go.js
+
+function goAppleDetail(loc){
+	location.href = "AppleDetailController?a_location=" + loc;
+}
+
+function deleteApple(loc){
+	
+}
