@@ -217,7 +217,60 @@ public class MemberDAO {
 	//update NOV22_MEMBER_ set m_pw = ?, m_name = ?, m_phone = ?,
 	//m_birthday = ?, m_photo = ? where m_id = ?
 	public static void update(HttpServletRequest req) {
+	/*
+	  	String path = null;
+	 
+		MultipartRequest mr = null;
 		
+		try {
+			path = req.getServletContext().getRealPath("img");
+			System.out.println(path); //확인용
+			mr = new MultipartRequest(req, path,
+									20*1024*1024,"utf-8",
+									new DefaultFileRenamePolicy());
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "회원가입실패(사진파일용량)");
+			return; 
+		}
+	*/	
+		Connection con= null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			req.setCharacterEncoding("utf-8");
+			String id = req.getParameter("m_id");
+			String pw = req.getParameter("m_pw");
+			String name = req.getParameter("m_name");
+			String phone = req.getParameter("m_phone");
+			String birthday = req.getParameter("m_birthday");
+			String photo = req.getParameter("m_photo");
+			
+			String sql = "update NOV22_MEMBER_ set m_pw = ?, "
+					+ "m_name = ?, m_phone = ?, m_birthday = ?, "
+					+ " m_photo = ? where m_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, pw);
+			pstmt.setString(2, name);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, birthday);
+			pstmt.setString(5, photo);
+			pstmt.setString(6, id);
+			
+			if(pstmt.executeUpdate() == 1) {
+				req.setAttribute("r", "수정성공");
+			} else {
+				req.setAttribute("r", "수정실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "수정실패");
+		}
+		KwakDBManager.close(con, pstmt, null);
 	}
 }
 
