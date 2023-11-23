@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+::webkit-scrollbar { display: none; } /* 웹페이지 우측 스크롤바 안보이게 하는 방법 */
+
+@font-face { font-family: "i"; src: url("i.ttf"); }
+/* ../ << 하나 상위 폴더로 이동 */
+body { margin-top: 0px; margin-left: 0px; margin-right: 0px; background-image: url("../img/bg.png");
+	font-family: "i"; color: white; }
+
+#siteTitleTbl { width: 100%; border-spacing: 0px; }
+
+#siteTitle { background-color: red; height: 60px; }
+
+#siteTitle a { font-size: 40pt; font-weight: 700; color: white; text-decoration: none; }
+
+#siteMenu { background-color: green; }
+
+#siteMenu a { font-size: 30pt; font-weight: 700; color: white; text-decoration: none; } 
+
+#siteContentTble { width: 100%; background-color: transparent; margin-top: -10px; }
+
+#siteContent { font-size: 25pt; font-weight: 500; color: white; text-shadow: black 0px 0px 5px; }
+
+#homeImg { position: fixed; left: 0px; bottom: 0px; width: 300px; height: 500px; opacity: 0.7; }
+
+#siteLoginTbl { width: 300px; height: 200px; position: fixed; top: 125px; right: 0px; 
+	background-color: #FF000080; }
+
+#dbResult { font-size: 15pt; font-weight: 600; position: fixed; top: 70px; right: 20px; color: red; }
+
+
+
+
+
+
+
+
+
+
+
+
+

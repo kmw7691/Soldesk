@@ -1,9 +1,0 @@
-//BMIM2.js
-//alert("check")
-
-function checkValid(){
-	let nBox = document.bmiForm.name;
-	let hBox = document.bmiForm.height;
-	let wBox = document.bmiForm.weight;
-	let pBox = document.bmiForm.photo;
-}

@@ -1,7 +1,0 @@
-//BMIM2.js
-//alert("check")
-
-function checkValid(){
-	alert("check")
-	return true;
-}
