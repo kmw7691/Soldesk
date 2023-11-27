@@ -59,11 +59,27 @@ insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '게시�
 
 select * from nov27_board;
 
+--DB에 저장된 전체 글 개수 조회
 select count(*) from nov27_board;
+--글쓴이와 id가 일치하면서 동시에 텍스트에 [게시판]이라는 글자가 들어있는 게시글의 갯수를 조회
+select count(*) from nov27_board, NOV22_MEMBER
+	where b_writer = m_id and b_text like '%게시판%';
 
 
-
-
+--전체 게시글이 보이게(검색어가 있다면 검색어기준 시간 역순. 없으면 등록시간 역순)
+select*from NOV27_BOARD, NOV22_MEMBER
+		where m_id = b_writer and b_text like '%게시판%'
+		order by b_when desc;
+		
+select * from(
+	select rownum as rn, b_no, b_writer, b_when, b_text, m_photo
+		from (
+			select*from NOV27_BOARD, NOV22_MEMBER
+			where m_id = b_writer and b_text like '%게시판%'
+			order by b_when desc
+		)
+	)
+	where rn >= 1 and rn <= 2
 
 
 

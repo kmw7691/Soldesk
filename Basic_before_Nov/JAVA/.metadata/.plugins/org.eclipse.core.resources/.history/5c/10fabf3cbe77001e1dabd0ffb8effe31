@@ -1,0 +1,58 @@
+package com.kwak.oct311mbd.main;
+
+import java.io.InputStream;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import com.kwak.http.client.KwakHttpClient;
+
+public class getAirController {
+	public static void main(String[] args) {
+		try {
+			String addr = "http://openapi.seoul.go.kr:8088/"
+					+ "70646b63596a69683437716f794e49/xml/"
+					+ "RealtimeCityAir/1/25/";
+			InputStream is = KwakHttpClient.download(addr);
+			
+			XmlPullParserFactory xppf = XmlPullParserFactory.newInstance();
+			XmlPullParser xpp = xppf.newPullParser();
+			xpp.setInput(is, "UTF-8");
+			
+			int type = xpp.getEventType();
+			String tagName = null;
+			//필드명 : 측정일시, 측정소명, 미세먼지, 초미세먼지, 오존, 통합대기환경등급
+			while (type != XmlPullParser.END_DOCUMENT) {
+				if(type == XmlPullParser.START_TAG) {
+					tagName = xpp.getName();
+				} else if(type == XmlPullParser.TEXT) {
+					if(tagName.equals("MSRDT")) {
+						System.out.printf("측정일시		: %s\r\n", xpp.getText());
+					}
+					if(tagName.equals("MSRSTE_NM")) {
+						System.out.printf("측정소명		: %s\r\n", xpp.getText());
+					}
+					if(tagName.equals("PM10")) {
+						System.out.printf("미세먼지		: %s\r\n", xpp.getText());
+					}
+					if(tagName.equals("PM25")) {
+						System.out.printf("초미세먼지		: %s\r\n", xpp.getText());
+					}
+					if(tagName.equals("O3")) {
+						System.out.printf("오존		: %s\r\n", xpp.getText());
+					}
+					if(tagName.equals("IDEX_NM")) {
+						System.out.printf("통합대기환경등급	: %s\r\n", xpp.getText());
+						System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+					}
+				}else if(type == XmlPullParser.END_TAG) {
+					tagName = "";
+				}
+				xpp.next();
+				type = xpp.getEventType();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

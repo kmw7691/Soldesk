@@ -1,0 +1,28 @@
+import java.util.Iterator;
+import java.util.Scanner;
+
+//어떤 숫자를 콘솔에 입력하면
+//그 숫자의 약수를 구해주는 프로그램
+//예)12 >> 1,2,3,4,6,12
+//배열x, for만.
+//계속숫자 입력하면 약수 계속 뽑아주지만
+//enter치기 전까지 무한루프
+//enter치면 종료
+
+public class PMain1 {
+	public static void main(String[] args) {
+		Scanner k = new Scanner(System.in);
+		int n = 0;
+		while(true) {
+			System.out.print("숫자입력 : ");
+			int a = k.nextInt();
+
+			for(n=0;;n++) {
+				if(a%n == 0) {
+					System.out.println(a);
+				}
+			System.out.printf("%d의 약수 : ",a, +n);
+			}
+		}
+	}
+}

@@ -1,0 +1,79 @@
+package com.kwak.oct311mbd.main;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import com.kwak.http.client.KwakHttpClient;
+
+public class getAirController {
+	public static ArrayList<Air> main(String[] args) {
+		try {
+			String addr = "http://openapi.seoul.go.kr:8088/"
+					+ "70646b63596a69683437716f794e49/xml/"
+					+ "RealtimeCityAir/1/25/";
+			InputStream is = KwakHttpClient.download(addr);
+			
+			XmlPullParserFactory xppf = XmlPullParserFactory.newInstance();
+			XmlPullParser xpp = xppf.newPullParser();
+			xpp.setInput(is, "UTF-8");
+			
+			int type = xpp.getEventType();
+			String tagName = null;
+			
+			//빈 arrayList
+			ArrayList<Air> airs = new ArrayList<>();
+			//air를 자바빈
+			Air a = null;
+			
+			//필드명 : 측정일시, 측정소명, 미세먼지, 초미세먼지, 오존, 통합대기환경등급
+			while (type != XmlPullParser.END_DOCUMENT) {
+				if(type == XmlPullParser.START_TAG) {
+					tagName = xpp.getName();
+					if(tagName.equals("row")) {
+						//row가 새로 나올때마다 새로운 객체 생성
+						a = new Air();
+					}
+				} else if(type == XmlPullParser.TEXT) {
+					//javabean의 멤버변수에 맞추어 데이터 setting하기
+//					if(tagName.equals("MSRDT")) {
+//						a.setMsrdt(xpp.getText());
+//					}
+					if(tagName.equals("MSRSTE_NM")) {
+						a.setMsrste_nm(xpp.getText());
+					}
+					if(tagName.equals("PM10")) {
+						//xml에서는 String -> javabean멤버변수 int
+						//String -> int로 형변환
+						a.setPm10(Integer.parseInt(xpp.getText()));
+					}
+					if(tagName.equals("PM25")) {
+						a.setPm25(Integer.parseInt(xpp.getText()));
+					}
+					if(tagName.equals("O3")) {
+						a.setO3(Double.parseDouble(xpp.getText()));
+					}
+					if(tagName.equals("IDEX_NM")) {
+						a.setIndex_nm(xpp.getText());
+						System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=");
+						//여기까지 javabean하나 채우기 완성
+						//하나 완성되면 ArrayList에 javabean 담기
+						airs.add(a);
+					}
+				}else if(type == XmlPullParser.END_TAG) {
+					tagName = "";
+				}
+				xpp.next();
+				type = xpp.getEventType();
+			}
+			//반복문 다 돌앗을때 ArrayList자체를 return
+			return airs;
+		} catch (Exception e) {
+			//개발자가 error확인하는 용도, 배포시에는 주석처리하는게 국룰
+			e.printStackTrace();
+			return null;
+		}
+	}
+}

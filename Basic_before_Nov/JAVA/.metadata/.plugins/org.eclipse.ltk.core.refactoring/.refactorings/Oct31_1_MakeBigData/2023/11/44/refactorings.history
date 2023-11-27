@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;DB.sql&apos; to &apos;Nov_1_MakeBigData/src/com.kwak.nov111mbd.main&apos;&#x0D;&#x0A;- Original project: &apos;Oct31_1_MakeBigData&apos;&#x0D;&#x0A;- Destination element: &apos;Nov_1_MakeBigData/src/com.kwak.nov111mbd.main&apos;&#x0D;&#x0A;- Original element: &apos;DB.sql&apos;" description="Copy file" destination="=Nov_1_MakeBigData/src&lt;com.kwak.nov111mbd.main" element1="src/com/kwak/oct311mbd/main/DB.sql" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1698817455211" units="0" version="1.0"/>
+</session>

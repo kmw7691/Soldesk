@@ -1,0 +1,28 @@
+package com.kwak.oct311mbd.main;
+
+//서울시 권역별 실시간 대기환경 현황
+//http://openapi.seoul.go.kr:8088/70646b63596a69683437716f794e49/xml/RealtimeCityAir/1/25/
+
+//DB테이블먼저 만들자
+
+//xml파일 파싱 -> DB에 insert -> select* 확인해서 arrayList담기 -> .csv파일로 내보내기
+
+//jar파일
+// 		1. jdbc를 위한 jar : ojdbc8
+//		2. xml을 위한 jar1 : kxml2.jar
+//		3. xml을 위한 jar2 : kwakClient
+//		4. java와 db 연결을 해주는 jar : kwakDBManager
+
+//Model -> DAO
+//		원래 method는 알파벳순 정렬이 국룰
+
+public class AirDAO {
+	//0. xml파싱 -> console에 찍히게
+	
+	
+	//1. xml파싱 -> javabean에 맞춰 담고 -> arrayList
+	public static void getAir() {
+		
+	}
+}
+ 

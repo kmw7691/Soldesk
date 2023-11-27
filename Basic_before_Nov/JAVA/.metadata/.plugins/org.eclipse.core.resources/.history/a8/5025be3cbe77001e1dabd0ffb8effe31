@@ -1,0 +1,87 @@
+package com.kwak.oct311mbd.main;
+
+import java.util.Date;
+
+//db테이블 만들면 항상 javabean만들기
+
+public class Air {
+	//멤버변수(Member variable), 속성 -> db필드와 똑같이
+	private int sa_no;
+	private Date msrdt;
+	private String msrste_nm;
+	private int pm10;
+	private int pm25;
+	private double o3;
+	private String index_nm;
+	
+	public Air() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Air(int sa_no, Date msrdt, String msrste_nm, int pm10, int pm25, double o3, String index_nm) {
+		super();
+		this.sa_no = sa_no;
+		this.msrdt = msrdt;
+		this.msrste_nm = msrste_nm;
+		this.pm10 = pm10;
+		this.pm25 = pm25;
+		this.o3 = o3;
+		this.index_nm = index_nm;
+	}
+
+	public int getSa_no() {
+		return sa_no;
+	}
+
+	public void setSa_no(int sa_no) {
+		this.sa_no = sa_no;
+	}
+
+	public Date getMsrdt() {
+		return msrdt;
+	}
+
+	public void setMsrdt(Date msrdt) {
+		this.msrdt = msrdt;
+	}
+
+	public String getMsrste_nm() {
+		return msrste_nm;
+	}
+
+	public void setMsrste_nm(String msrste_nm) {
+		this.msrste_nm = msrste_nm;
+	}
+
+	public int getPm10() {
+		return pm10;
+	}
+
+	public void setPm10(int pm10) {
+		this.pm10 = pm10;
+	}
+
+	public int getPm25() {
+		return pm25;
+	}
+
+	public void setPm25(int pm25) {
+		this.pm25 = pm25;
+	}
+
+	public double getO3() {
+		return o3;
+	}
+
+	public void setO3(double o3) {
+		this.o3 = o3;
+	}
+
+	public String getIndex_nm() {
+		return index_nm;
+	}
+
+	public void setIndex_nm(String index_nm) {
+		this.index_nm = index_nm;
+	}
+}

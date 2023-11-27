@@ -9,9 +9,11 @@
 <title>board/board.jsp</title>
 </head>
 <body>
+ 
 	<%-- 게시글 출력 부분 --%>
 	<c:forEach var="board" items="">
 		
 	</c:forEach>
+
 </body>
 </html>
