@@ -14,17 +14,66 @@ create table nov22_member(
 
 drop table nov22_member cascade constraint purge;
 
-insert into nov22_member values('1234', '1234', '1234', '1234',
-	to_date('2023-11-23', 'YYYYMMDD'), 'aa.png');
+insert into nov22_member values('asdf', '1', 'hong', '010.1111.1111',
+	to_date('20231122', 'YYYYMMDD'), '1.png');
+	
+insert into nov22_member values(?, ?, ?, ?, to_date(?, 'YYYYMMDD'), ?)
+
+select * from nov22_member;
 	
 truncate table nov22_member;
 
---id가 aaaa인 것의 모든 정보 조회
-select*from NOV22_MEMBER where m_id = 'aaaa';
-select*from NOV22_MEMBER;
+-- id가 aaaa인 것의 모든 정보 조회
+select * from nov22_member where m_id = 'aaaa';
+select * from nov22_member where m_id = ?
 
-delete from NOV22_MEMBER where m_id = ?;
-update NOV22_MEMBER_ set m_pw = ?, m_name = ?, m_phone = ?,
-						m_birthday = ?, m_photo = ? where m_id = ?
-							
-						
+-- id가 aaaa인 것의 정보 삭제
+delete from nov22_member where m_id = ?
+---------------------------------------------------------
+-- 게시판 테이블 : nov27_board
+-- 속성(필드명) : 글쓴이(b_writer), 글쓴 시간(업로드시간, b_when), 글 내용(b_text)
+-- 회원이 탈퇴하면 그 탈퇴한 회원이 쓴 글도 지워지게 + PK알아서
+
+create table nov27_board(
+	b_no number(3) primary key,
+	b_writer varchar2(10 char) not null,
+	b_when date not null,
+	b_text varchar2(200 char) not null,
+	constraint fk_board foreign key(b_writer)
+		references nov22_member(m_id)
+		on delete cascade
+);
+
+create sequence nov27_board_seq;
+
+-- 테이블삭제
+drop table nov27_board cascade constraint purge;
+-- 시퀀스삭제
+drop sequence nov27_board_seq;
+-- 외래키삭제(외래키가 있는 테이블 삭제할 때 함께 삭제해야 외래키 중복에 걸리지 않음)
+alter table nov27_board drop constraint fk_board;
+
+insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '하하하하');
+insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '게시판하는중');
+insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '게시판!!!');
+
+select * from nov27_board;
+
+select count(*) from nov27_board;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,7 @@
 			<td id="siteTitle" align="center"><a href="HomeController">Merry Christmas</a></td>
 		</tr>
 		<tr>
-			<td id="siteMenu" align="center"><a href="#">Board</a></td>
+			<td id="siteMenu" align="center"><a href="BoardController">Board</a></td>
 		</tr>
 	</table>
 	<table id="siteContentTble">
