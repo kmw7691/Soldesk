@@ -23,3 +23,10 @@ function memberDelete(){
 		location.href = "MemberDeleteController";
 	}
 }
+
+function boardDelete(b_no){
+	let t = confirm("ㄹㅇ 글삭?")
+	if(t){
+		location.href = "BoardDeleteController?b_no=" + b_no;
+	}
+}

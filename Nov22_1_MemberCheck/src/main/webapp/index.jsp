@@ -7,6 +7,7 @@
 <title>index.jsp</title>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/member.css">
+<link rel="stylesheet" href="css/board.css">
 <script type="text/javascript" src="js/go.js"></script>
 <script type="text/javascript" src="js/KwakValidChecker.js"></script>
 <script type="text/javascript" src="js/nov22_memberCheck.js"></script>

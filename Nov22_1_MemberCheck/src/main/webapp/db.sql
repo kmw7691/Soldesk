@@ -55,6 +55,7 @@ alter table nov27_board drop constraint fk_board;
 
 insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '하하하하');
 insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '게시판하는중');
+insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, 'ㅋㅋㅋㅋㅋㅋ');
 insert into NOV27_BOARD values(nov27_board_seq.nextval, 'aa', sysdate, '게시판!!!');
 
 select * from nov27_board;
@@ -81,7 +82,7 @@ select * from(
 	)
 	where rn >= 1 and rn <= 2
 
-
+delete from NOV27_BOARD where b_no = 11;
 
 
 
