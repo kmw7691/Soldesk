@@ -3,8 +3,11 @@ package com.kwak.nov223.board;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import com.kwak.db.manager.KwakDBManager;
@@ -222,6 +225,40 @@ public class BoardDAO {
 		}
 		KwakDBManager.close(con, pstmt, null);
 	}
+	
+	//게시글 수정하기
+	public void update(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = KwakDBManager.connect("kwakPool");
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			req.setCharacterEncoding("utf-8");
+			int no = Integer.parseInt(req.getParameter("b_no"));
+			String text = req.getParameter("b_text");
+			
+			String sql = "update NOV27_BOARD set b_when = sysdate, "
+					+ "	b_text = ? where b_no = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, text);
+			pstmt.setInt(2, no);
+			
+			if(pstmt.executeUpdate() == 1) {
+				req.setAttribute("r", "수정성공");
+			} else {
+				req.setAttribute("r", "수정실패");
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("r", "수정실패-DB문제");
+		}
+		KwakDBManager.close(con, pstmt, null);
+	}
+	
 }	
 
 

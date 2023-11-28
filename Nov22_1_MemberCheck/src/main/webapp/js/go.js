@@ -30,3 +30,10 @@ function boardDelete(b_no){
 		location.href = "BoardDeleteController?b_no=" + b_no;
 	}
 }
+
+function boardUpdate(b_no){
+	let t = confirm("ㄹㅇ 수정?")
+	if(t){
+		location.href = "BoardUpdateController?b_no=" + b_no;
+	}
+}

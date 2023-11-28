@@ -32,6 +32,14 @@
 			</table>
 		</form>
 	</c:if>
+	<form action="BoardSearchController">
+		<table id="searchTbl">
+			<tr>
+				<td><input autocomplete="off" name="search" id="searchinput"></td>
+				<td><button>검색</button></td>
+			</tr>
+		</table>
+	</form>
 	
  	<%--페이지처리 --%>
  	<c:if test="${pageNo != 1 }">
@@ -44,6 +52,8 @@
 	<%-- 게시글 출력 부분 --%>
 	<c:forEach var="board" items="${boards }">
 		<table class="boardContentTbl">
+		
+		<form action="BoardUpdateController" method="post">
 			<tr>
 				<td valign="top" align="center" rowspan="3" class="boardPhoto">
 					<img src="img/${board.m_photo }">
@@ -64,7 +74,8 @@
 			<c:if test="${board.b_writer == sessionScope.loginMember.m_id }">
 			<tr>
 				<td align="right" colspan="2">
-					<button>수정</button>
+					<button onclick="boardUpdate(${board.b_no});">수정</button>
+		</form>
 					<button onclick="boardDelete(${board.b_no});">삭제</button>
 				</td>
 			</tr>

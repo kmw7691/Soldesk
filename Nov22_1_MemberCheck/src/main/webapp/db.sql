@@ -84,7 +84,8 @@ select * from(
 
 delete from NOV27_BOARD where b_no = 11;
 
-
+update NOV27_BOARD set b_writer = ?, b_when = ?,
+	b_text = ? where b_no = ?
 
 
 
