@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kwak">
+	<select id="getAllFruit" resultType="com.kwak.nov281mb.Fruit">
+		select*from nov28_fruit order by f_price
+	</select>
+	<insert id="regFruit" parameterType="com.kwak.nov281mb.Fruit">
+		insert into nov28_fruit values(#{f_name}, #{f_price})
+	</insert>
+</mapper>
