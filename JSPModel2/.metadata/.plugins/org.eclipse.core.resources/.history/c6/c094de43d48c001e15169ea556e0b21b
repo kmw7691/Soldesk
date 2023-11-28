@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.boardContentTbl{
+	width:700px;
+	height:60px;
+	border:#FFDA89 solid 5px;
+	margin-top:20px;
+	border-radius: 10px;
+	background-color: #BFCACA;
+	box-shadow: white 0px 0px 10px;
+}
+
+.boardContentTbl img{
+	max-width: 90%;
+	box-shadow: white 0px 0px 5px;
+}
+
+.boardPhoto{
+	width:100px;
+	padding-top:5px;
+}
+
+.boardWriter{
+	padding-left:10px;
+	font-weight:700;
+	height:20px;
+	font-size:30pt;
+	color:#FFFFB5;
+}
+
+.boardWhen{
+	height:20px;
+	color:#FFFFB5;
+	font-size:15pt;
+}
+
+.boardText{
+	padding:15px;
+	color:#FFFFB5;
+}
+
+#boardL{
+	position: absolute;
+	font-size: 100pt;
+	font-weight: 900;
+	color:white;
+	top:400px;
+	left:210px;
+	text-decoration: none;
+}
+
+#boardR{
+	position: absolute;
+	font-size: 100pt;
+	font-weight: 900;
+	color:white;
+	top:400px;
+	right:210px;
+	text-decoration: none;
+}

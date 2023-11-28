@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+    <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="com.kwak.nov141.bmi.Guest"/>
+    <fullyQualifiedTypeName name="com.kwak.nov142.el.Kwak"/>
+    <fullyQualifiedTypeName name="com.kwak.nov143.respmain.RSPGameEngine"/>
+    <fullyQualifiedTypeName name="com.kwak.nov151.hjmain.HJGameEngine"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="com.kwak.nov151.nbmain.NBGameEngine"/>
+    <fullyQualifiedTypeName name="com.kwak.nov163.calc.Calculator"/>
+    <fullyQualifiedTypeName name="com.kwak.nov163.jstlc.JSTLCController"/>
+    <fullyQualifiedTypeName name="com.kwak.nov163.jstlc.JSTLCDataMaker"/>
+    <fullyQualifiedTypeName name="com.kwak.nov163.jstlc.Human"/>
+    <fullyQualifiedTypeName name="com.kwak.nov163.jstlf.JSTLFDataMaker"/>
+    <fullyQualifiedTypeName name="com.kwak.nov163.jstlf.Snack"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+    <fullyQualifiedTypeName name="javax.activation.DataSource"/>
+    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
+    <fullyQualifiedTypeName name="javax.naming.spi.DirStateFactory.Result"/>
+    <fullyQualifiedTypeName name="com.kwak.nov171.apple.Apple"/>
+    <fullyQualifiedTypeName name="com.kwak.nov171.apple.appleDAO"/>
+    <fullyQualifiedTypeName name="com.kwak.nov223.main.DateManager"/>
+    <fullyQualifiedTypeName name="java.net.URLDecoder"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.kwak.nov223.board.Board"/>
+    <fullyQualifiedTypeName name="com.kwak.nov223.member.Member"/>
+    <fullyQualifiedTypeName name="oracle.jdbc.proxy.annotation.Pre"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
+    <fullyQualifiedTypeName name="com.kwak.db.manager.KwakDBManager"/>
+    <fullyQualifiedTypeName name="com.kwak.nov223.member.MemberDAO"/>
+    <fullyQualifiedTypeName name="com.kwak.nov223.main.TokenManager"/>
+    <fullyQualifiedTypeName name="com.kwak.nov223.board.BoardDAO"/>
+</qualifiedTypeNameHistroy>

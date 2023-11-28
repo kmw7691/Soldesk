@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+/*member.css*/
+
+#loginTbl{
+	margin-top:10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#loginTbl th{
+	font-size : 25pt;
+}
+
+#loginTbl input{
+	font-size:15pt;
+	border:green solid 3px;
+	border-radius: 5px;
+	height : 20px;
+	background-color:transparent;
+	color:white;
+	text-align:center;
+	width:80%;
+	margin-top:10px;
+}
+
+#loginTbl input:placeholder{
+	font-size: 15pt;
+	color:white;
+	text-align:center;
+}
+
+#loginTbl .loginBtn{
+	font-size:15pt;
+	color:#CC66FF;
+	text-shadow: #FF9900 0px 0px 5px;
+	background-color: transparent;
+	margin-top: 30px;
+	margin-left:10px;
+}
+
+#loginSuccessTbl{
+	font-size:20pt;
+	font-weight:700;
+	color:#99FFCC;
+}
+
+#loginSuccessTbl img{
+	width:80%;
+}
+
+#loginSuccessTbl button{
+	font-size:15pt;
+	color:#99FFCC;
+	text-shadow: #FF9900 0px 0px 5px;
+	background-color: transparent;
+	border:#99ffcc solid 2px;
+	margin-top:30px;
+	margin-left: 10px;
+}
+
+#signupTbl{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:20px;
+	color:#99ffcc;
+}
+
+#signupTbl input{
+	border: #99FFCC solid 5px;
+	border-radius: 5px;
+	background-color: #cc66ff80;
+	margin-top:5px;
+	height:35px;
+	width:300px;
+	font-size: 15pt;
+	font-weight:600;
+	color: #99ffcc;
+	text-align: center;
+}
+
+#signupTbl button{
+	border:#99ffcc solid 5px;
+	border-radius: 5px;
+	font-size:15pt;
+	font-weight: 700;
+	color:#99ffcc;
+	background-color: #cc66ff80;
+	width: 150px;
+	height:50px;
+	margin-top:10px;
+	cursor:pointer;
+}
+
+#signupTbl button:hover{
+	background-color: #ff3300;
+}
+
+#signupTbl select{
+	width: 75px;
+	height: 35px;
+	border: #99ffcc solid 5px;
+	border-radius: 5px;
+	background-color: #cc66ff80;
+	color:#99ffcc;
+	font-size:15pt;
+	margin-top: 5px;
+}
+
+input[type=file]::file-selector-button{
+	border: #99ffcc solid 2px;
+	border-radius: 5px;
+	background-color: #cc66ff80;
+	color:#99ffcc;
+	cursor:pointer;
+}
+
+input[type=file]::file-selector-button:hover{
+	background-color: #ff3300;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
