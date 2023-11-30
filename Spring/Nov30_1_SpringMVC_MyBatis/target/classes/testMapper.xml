@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kwak.nov301.test.TestMapper">
+	<insert id="regTest" parameterType="com.kwak.nov301.test.Test">
+		insert into nov30_test values(#{t_title}, #{t_when})
+	</insert>
+	
+	<select id="getAllTest" resultType="com.kwak.nov301.test.Test">
+		select*from nov30_test order by t_when	
+	</select>
+</mapper> 

@@ -5,4 +5,8 @@
 		insert into nov29_student values(
 			nov29_student_seq.nextval, #{s_name}, #{s_nickname})
 	</insert>
+	
+	<select id="getAllStudent" resultType="com.kwak.nov301.student.Student">
+		select*from NOV29_STUDENT order by s_no	
+	</select>
 </mapper>
