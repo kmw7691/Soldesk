@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2_CSS.html</title>
+<style type="text/css">
+	h1{
+		color:red;
+		transition: all 0.5s ease-out;
+	}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(()=>{
+		//alert('connected');
+		//btn1을 누르면  h1 글자색이 orange, 배경색이 black
+		//#(css선택자).css(속성, 값)
+		$('#btn1').click(() => {
+			$('h1').css('color', 'orange');
+			$('h1').css('background-color', 'black');
+			
+			//비추. 계속적으로 css엮는거 가능
+			//$('h1').css('color', 'orange').css('background-color', 'black');
+		});
+		
+		//btn2를 누르면 현재 j1의 글자색을 alert로 출력
+		$('#btn2').click(() => {
+			let h1color = $('h1').css('color');
+			alert(h1color);
+		});
+		
+		//btn3을 누르면 input에 입력한 값으로 h1의 글자크기 변경
+		$('#btn3').click(() => {
+			let iInput = $('#i').val();
+			$('h1').css('font-size', iInput + "pt");
+		});
+		
+		//btn4를 누르면 input의 가로길이를 input에 쓴값으로 표현(출력)
+		$('#btn4').click(() =>{
+			let iWidth = $('#i').css('width');
+			$('#i').val(iWidth);
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>크아아악</h1>
+	<hr>
+	<button id="btn1">btn1</button>
+	<button id="btn2">btn2</button>
+	<hr>
+	<input id="i"><p>
+	<button id="btn3">btn3</button>
+	<button id="btn4">btn4</button>
+</body>
+</html>

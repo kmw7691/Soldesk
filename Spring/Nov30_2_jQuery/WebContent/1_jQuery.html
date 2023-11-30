@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1_jQuery.html</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	//$(선택자).이벤트(click함수);
+	//			click함수 : 어떤 이벤트에 의해 호출되어지는 함수
+	
+	/*$(document).ready(function init(){ //이(문서).준비다되면(자동으로 돌릴함수);
+		alert('ㅎㅇ?');
+	});*/
+	
+	/*$(function () {
+		alert('준비완료');
+	});*/
+	
+	$(function(){
+		$("h1").click(() => {
+			$("h2").click(() =>{
+				alert("ㅇㅇㅇㅁㅇㄻㄹ");
+			});
+		});
+		
+		//스위치기능
+		let b = false;
+		$("h3").click(() => {
+			b = !b;
+			alert(b);
+		});
+		
+		let iiInput = ${'#ii'}; // == document.getElementId('ii');
+		//<button>에 클릭이벤트가 발생하면 콜백함수가 자동으로 호출되도록 연결
+		$('button').click(() => {
+			alert(iiInput.val());
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- 
+		유효성검사 : ~~~ValidChecker.js
+			-> 유효성검사 편하게하려고 함수를 정리해둔 것
+		웹페이지 이벤트처리 : jQuery.js
+			->JS자체를 편하게 사용하려고 함수를 정리해 놓은 것
+	 -->
+	 <h1>으어어ㅓ</h1>
+	 <h2>그어어ㅓ</h2>
+	 <h3>흐어어어ㅓ</h3>
+	 <hr>
+	 <input id="ii"><button>출력</button><button>print</button> 
+</body>
+</html>

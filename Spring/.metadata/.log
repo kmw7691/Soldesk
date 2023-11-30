@@ -6424,3 +6424,12 @@ org.apache.lucene.store.LockObtainFailedException: lock instance already obtaine
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2023-11-30 15:14:32.536
 !MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jface.text 2 0 2023-11-30 15:27:02.114
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.jface.text 2 0 2023-11-30 15:43:25.394
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.jface.text 2 0 2023-11-30 16:23:03.326
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'

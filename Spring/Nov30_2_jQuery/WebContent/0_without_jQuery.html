@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0_without_jQuery.html</title>
+<script type="text/javascript">
+	//인터프리터 방식의 언어 : 실행을 하면 위에서부터 한줄씩 기계어로 번역을 해서 실행
+	//	lcf : 컴파일 방식의 언어 : 실행을 하면 전체를 한번에 번역해서 실행
+	//		전체 한번에 번역하는 컴파일 방식의 부재 -> 에러는 발생x -> 에러잡기 힘듬
+	
+	//DOM객체에 onXXX 이벤트를 연결
+	let iInput = null;
+	function init(){
+		iInput = document.getElementById("i");
+		alert(iInput.value);
+	}
+	
+	//print라는 버튼을 클릭하면 print()함수와 연결
+	//alert창으로 input에 입력한 값이 출력
+	function print(){
+		iInput = document.getElementById("i");
+		alert(iInput.value);		
+	}
+</script>
+</head>
+<body onload="init();"> <!-- onload : 실행시 페이지가 모두 로딩된후 
+							지정한 함수가 호출이 되도록
+							onload로 연결할 함수명은 보통 init으로함 -->
+	<input id="i" value="ㅎㅇ">
+	<button onclick="print();">Print</button>
+</body>
+</html>
