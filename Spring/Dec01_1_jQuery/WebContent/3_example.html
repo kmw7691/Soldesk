@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3_example.html</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(()=>{
+		//alert('check');
+		
+		//ㅋㅋㅋㅋㅋ : 글자색 green, 배경색red
+		//ㅎㅎㅎㅎㅎ : 글자색 yellow, 배경색blue
+		//ㅠㅠㅠㅠㅠ : 글자색 pink, 배경색 teal
+		//반복문으로 css ㄱㄱ
+		let cssobj =[
+			{
+				color:'green',
+				bgColor:'red'
+			},
+			{
+				color:'yellow',
+				bgColor:'blue'
+			},
+			{
+				color:'pink',
+				bgColor:'teal'
+			},
+		];
+		
+		$('h1').each(function(i, h){
+			$(h).css('color', cssobj[i].color);
+			$(h).css('background-color', cssobj[i].bgColor);
+		});
+		
+		//이미지파일 : 확장자 같게, 파일면(ex. s1, s2, s3)
+		//처음 시작사진 ~ 끝사진까지 한장씩 넘기면서 보여주기
+		//	마지막사진 출력하고 나면 -> 다시 처음부터 시작
+		//	setInterval사용
+		let i =0;
+		setInterval(()=>{
+			i++;
+			if( i == 10){
+				i = 1;
+			}
+			$('#ii').attr('src', 'img/s'+ i + '.png');
+		}, 500);
+	});
+</script>
+</head>
+<body>
+	<img id="ii" src="img/s1.png">
+	<h1>ㅋㅋㅋㅋㅋ</h1>
+	<h1>ㅎㅎㅎㅎㅎ</h1>
+	<h1>ㅠㅠㅠㅠㅠ</h1>
+</body>
+</html>

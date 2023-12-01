@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1_CSS.html</title>
+<style type="text/css">
+	img{
+		position:fixed;
+		transition: all 0.5s ease-out;	
+	}
+	
+	#t{
+		position: fixed;
+		top: -80px;
+		transition: all 0.5s ease-out;
+	}
+	
+	#tt{
+		opacity: 0; /*투명도만 조절 : 사라지지는 않아서 메뉴는 눌러짐*/
+		/*disply:none; 사라지게 하는거*/
+		position: fixed;
+		right: 7px;
+		transition : all 0.5s ease-out;
+	}
+	
+	button{
+		position: fixed;
+		top:150px;
+	}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(() => {
+		//alert('check');
+		
+		//setInterval : JavaScript의 반복함수
+		//			일정한 시간 간격으로 코드를 반복적으로 실행
+		//setTimeout : 정해진 시간간격에 코드가 한번 실행
+		
+		setInterval(()=>{
+			let x = Math.random() * 500;
+			let y = Math.random() * 500;
+			$('img').css('top', y + 'px');
+			$('img').css('left', x + 'px');
+		}, 700);
+		
+		let tVisible = false;
+		$('#tHandle').click(() => {
+			if(!tVisible){
+				$('#t').css('top', '5px');
+			} else {
+				$('#t').css('top', '-80px');
+			}
+			tVisible = !tVisible;
+		});
+	//mouseenter() : 해당영역에 마우스 커서가 들어갔을 때 이벤트가 발생
+	//mouseleave() : 해당영역 밖으로 마우스 커서가 나가면 이벤트가 발생
+		$('#tt').mouseenter(() => {
+			$('#tt').css('opacity', 1);
+		});
+		$('#tt').mouseleave(() => {
+			$('#tt').css('opacity', 0);
+		});
+		
+		let c = false;
+		$('button').click(()=>{
+			if(!c){
+				//attr() : DOM객체에 넣는 속성을 가져오거나 추가하는 기능
+				//		ㄴ Attrbute 축약
+				$('img').attr('src', 's1.png');
+			} else {
+				$('img').attr('src', 's2.png');
+			}
+			c = !c;
+		});
+		
+	
+	});
+		
+	
+</script>
+</head>
+<body>
+	<img src="s2.png">
+	<table border="1" id="t">
+		<tr><td><a href="https://www.naver.com">네이버 ㄱㄱ</a></td></tr>
+		<tr><td><a href="https://www.youtube.com">유튜브 ㄱㄱ</a></td></tr>
+		<tr><td><a href="https://www.google.com">구글 ㄱㄱ</a></td></tr>
+		<tr><td id="tHandle" align="center">| | | |</td></tr>
+	</table>
+	<table border="1" id="tt">
+		<tr><td><a href="https://www.naver.com">네이버 ㄱㄱ</a></td></tr>
+		<tr><td><a href="https://www.youtube.com">유튜브 ㄱㄱ</a></td></tr>
+		<tr><td><a href="https://www.google.com">구글 ㄱㄱ</a></td></tr>
+	</table>
+	<button>이미지 변경</button>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2_RepeatStmt.html</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(()=>{
+		//alert('check');
+		
+		//JavaScript
+		//		배열 : {1, 56, 3, 86, 123}
+		//		객체 : {menu:"짜장면", prcie:3000}
+		
+		//배열속에 객체 : 이 형태로 DB에 있는 데이터 표현한것 : JSON
+		
+		let arrobj = [
+			{
+				menu : "라면",
+				price : 4000
+			},
+			{
+				menu : "김밥",
+				price : 3500
+			},
+			{
+				menu : "떡볶이",
+				price : 5000
+			},
+		];
+		
+		//JavaScript의 배열 대상 반복문
+		//		for(var i=0;..) - 인덱스 활용도 높음
+		//		for ... of		- 객체에 순서대로 접근이 용이한 편
+		//		$.each(배열, 데이터 한줄 만날때마다 호출될 콜백함수)
+		//						-인덱스도 가지고 있고, 객체에 접근하기도 용이한 편
+		$.each(arrobj, function(i, lunch){ //index무조건 필요함
+			alert(i + 1 + "]" + lunch.menu + " : " + lunch.price);
+		});
+		
+		//DOM객체 대상 반복문
+		//$(선택자).each(DOM객체 하나 만날때마다 호출될 콜백함수)
+		//h1 -> 순서대로 글자크기가 10 / 20/ 30pt 되게
+		$('h1').each(function(i, h){
+			$(h).css('font-size',((i + 1) *10) + 'pt');
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>ㅠㅠㅠ</h1>
+	<h1>ㅎㅎㅎ</h1>
+	<h1>ㅋㅋㅋ</h1>
+</body>
+</html>
