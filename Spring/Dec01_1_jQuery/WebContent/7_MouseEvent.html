@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>7_MouseEvent.html</title>
+<style type="text/css">
+	div{
+		border:orange solid 3px;
+		width:200px;
+		height:200px;
+	}
+	img{
+		position:fixed;
+	}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(()=>{
+		//alert('으어ㅓ어');
+		$('div').mousedown(function(){
+			$('h1').text('mousedown');
+		});
+		$('div').mouseup(function(){
+			$('h1').text('mouseup');
+			
+		});
+		$('div').mouseenter(function(){
+			$('h1').text('mouseenter');
+			
+		});
+		$('div').mouseleave(function(){
+			$('h1').text('mouseleave');
+		});
+		
+		//DOM객체의 정확한 좌표를 얻고 싶을때(html에 약간의 여백이 존재)
+		let divX = $('div').offset().left;//선택자의 정확한 x좌표
+		let divY = $('div').offset().top;//선택자의 정확한 y좌표
+		
+		$('div').mousemove(function(e){
+			//마우스의 좌표 표시(html기준)
+			//$('h2').text('mousemove : '+ e.pageX + ', ' + e.pageY);
+			
+			//div를 기준으로한 정확한 좌표
+			let x = e.pageX - divX;
+			let y = e.pageY - divY;
+			$('h2').text('mousemove : '+ x + ', ' + y);
+			
+		});
+		
+		$('html').mousemove(function(e){
+			$('img').css('left', (e.pageX + 1) + 'px');
+			$('img').css('top', (e.pageY + 1) + 'px');
+		});
+	});
+</script>
+</head>
+<body>
+	<div></div>
+	<h1></h1>
+	<h2></h2>
+	<img src="s10.png">
+</body>
+</html>

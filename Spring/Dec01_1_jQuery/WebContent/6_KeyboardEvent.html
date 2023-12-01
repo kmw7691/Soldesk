@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>6_KeyboardEvent.html</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(()=>{
+		//alert('check');
+		
+		//input에서 keyboard를 누르면 -> 누른순간에 : keydown
+		/*
+		$('input').keydown(function(){
+			$('h1').text('키보드를 누르는 동안');
+			return false; //기능 발동전에 return false;가 있으면 
+						  //원래 기능을 못하도록 막을수도 있음
+		});
+		*/
+		
+		$('input').keydown(function(e){
+			//키보드 아스키값 : 모든 키에는 고유한 값이 있다
+			$('h1').text(e.keyCode);  
+			if(e.keyCode == 13){ // enter 키
+				alert('호우');
+			} else if(e.keyCode == 65) {
+				return false;
+			} else if(e.keyCode == 75) {
+				let t = $('input').val();
+				$('input').val(t + 'ㅋ');
+				return false; // 원래기능 못하게해라 -> k안나오게하셈
+			}
+		});
+		
+		//keyup : 키보드에서 손 떼면
+		$('input').keyup(function(){
+			//alert('asdfa');
+			$('h1').text('ㅋㅋㅋ');
+		});
+		
+		//html자체에도 keydown이벤트 넣을수있음
+		let l = 0;
+		$('html').keydown(function(e){
+			/*
+			if(e.keyCode == 116){ //f5
+				return false;
+			}
+			*/
+			if(e.keyCode == 39){ //오른쪽방향키
+				l += 5; //방향키 누를때마다 5씩증가
+				$('h2').css('left', l+'px');
+			}
+		});
+		
+	});
+</script>
+<style type="text/css">
+	h2{
+		position:fixed;
+	}
+</style>
+</head>
+<body>
+	<input><p>
+	<h1></h1>
+	<h2>text</h2>
+</body>
+</html>

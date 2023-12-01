@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>5_DOM_Select.html</title>
+<style type="text/css">
+	td{
+		height:50px;
+	}
+	input{
+		height:50px;
+	}
+	button{
+		width:100px;
+		height:50px;
+	}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(()=>{
+		$('button').click(function asd(){
+			//버튼들 이름이 다 같아서 다 빨간색댐
+			//$('button').css('background-color', 'red');
+			
+			//$(this) : 클릭 이벤트 콜백 함수인 asd()를 호출한 장본인
+			//			누른 버튼만 콜백함수가 실행
+			$(this).css('background-color', 'red');
+			
+			//누른 버튼이 있는 td에 배경색을 주기
+			//parent() : 내가 누른 this의 한단계 상위 객체
+			//children() : 내가 누른 this의 하위객체
+			$(this).parent().css('background-color', 'green');
+			//$(('td').this).css('background-color', 'green');
+		
+			//내가 누른 버튼이 있는 table의 테두리를 blue
+			//$(this).parent().parent().parent().css('border', 'blue solid 3px');
+			
+			//closest('CSS선택자') : 상위에 있는것 중에서 가장 가까운 css선택자
+			$(this).closest('table').css('border', 'blue solid 3px');
+			
+		});
+		
+		$('td').click(function(){
+			//td를 클릭했을때 눌러진 td의 배경색을 노란색
+			$(this).css('background-color', 'yellow');		
+			//td를 클릭했을때 눌러진 그 td속에 들어있는 모든 것들의 배경을 핑크색
+			$(this).children().css('background-color', 'pink');
+			//td를 클릭했을때 눌러진 그 td속에 들어있는 버튼의 테두리색 초록색
+			$(this).find('button').css('border', 'green solid 3px');
+			
+		});
+		
+		//input에 입력을 하고 버튼을 눌럿을때
+		//input에 쓴 글자가 input옆 버튼의 글자색이 되도록
+		$('button').click(function(){
+			//버튼클릭햇을때 input의 값을 입력할 수 잇어야됨
+			//let c = $(this).parent().find('input').val();
+			//alert(c);
+			
+			//siblings() : 동일선상의 특정 선택자
+			let c = $(this).siblings('input').val();
+			//alert(c);
+			$(this).css('color', c);
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>
+				<input><button>111</button>
+			</td>
+		</tr>
+		<tr>
+			<td><input><button>222</button></td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td><input><button>333</button></td>
+		</tr>
+		<tr>
+			<td><input><button>444</button></td>
+		</tr>
+	</table>
+</body>
+</html>
