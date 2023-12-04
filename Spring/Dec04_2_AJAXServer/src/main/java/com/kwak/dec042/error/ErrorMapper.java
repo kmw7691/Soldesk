@@ -1,5 +1,7 @@
 package com.kwak.dec042.error;
 
-public interface ErrorMapper {
+import java.util.List;
 
+public interface ErrorMapper {
+	public abstract List<Error> getAllError();
 }
