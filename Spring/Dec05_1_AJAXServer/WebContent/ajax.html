@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax.html</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	//alert('check');
+	$(()=>{
+		//Error메시지 JSON형태 데이터 전체받기를 해서 여기서 alert
+		//http://localhost/dec042/error.getJSON
+		
+		/*
+		$.getJSON('http://localhost/dec042/error.getJSON', function(dd){
+			alert(JSON.stringify(dd));
+		})
+		*/
+		
+		//http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1135063000
+		//AJAX로 alert ㄱㄱ
+		$.ajax({
+			url:'http://www.kma.go.kr/wid/queryDFSRSS.jsp',
+			data:{zone : 1135063000},
+			success: function(aa){
+				alert(aa);
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- 
+		AJAX - JavaScript -> Web Browser
+			브라우저의 동일출처정책에 걸리기때문에
+			단순한 AJAX로는 다른사람의 것을 가져올 수 없음
+			'동일출처정책' : 웹과 상호작용을 하는 JavaScript 코드에대한 '보안'정책
+			
+		Cross-Domain AJAX -> 브라우저에 동일출처정책을 뚫는 AJAX
+			다른 사람이 만든거 가져올수 있는 AJAX
+			
+			[서버측에서 다른사람들에게 배포하고 싶다면]
+				1. JSONP(JSON with Padding)
+					일부러 JSON 모양을 뭉개서 JSON이 아닌것처럼 만듬 -> AJAX가 아니게
+				2. 응답 헤더 : Access-Control-Allow-Origin 세팅
+				
+			[서버측에서 cross-domain 허용하지 않았다면 - 직접작업]
+				3. proxy 서버
+					: server-client 사이에 중계끼능 해줌
+					=> ip주소 우회해서 사용하는 것
+					AJAX로는 기상청 데이터 가져올 수 없음
+					근데 JAVA로는 가능함
+	 -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

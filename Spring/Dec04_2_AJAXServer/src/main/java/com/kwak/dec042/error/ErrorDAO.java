@@ -18,4 +18,12 @@ public class ErrorDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public Errors getJson(HttpServletRequest req) {
+		return new Errors(ss.getMapper(ErrorMapper.class).getAllError());
+	}
+	
+	public Errors searchError(Error e, HttpServletRequest req) {
+		return new Errors(ss.getMapper(ErrorMapper.class).searchError(e));
+	}
 }

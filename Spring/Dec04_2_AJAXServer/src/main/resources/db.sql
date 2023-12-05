@@ -11,3 +11,6 @@ insert into dec04_error values('세미콜론(;)넣음', 'mapper.xml');
 insert into dec04_error values('파일 위치 틀림', '프로젝트 전체');
 
 --index.jsp에 db테이블속 데이터를 하나하나 다 나오게
+
+select*from dec04_error where e_what 
+		like '%음%' order by e_where;

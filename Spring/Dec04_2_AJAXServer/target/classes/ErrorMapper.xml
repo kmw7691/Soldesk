@@ -4,4 +4,10 @@
 	<select id="getAllError" resultType="com.kwak.dec042.error.Error">
 		select * from dec04_error
 	</select>
+	
+	<select id="searchError" resultType="com.kwak.dec042.error.Error"
+							parameterType="com.kwak.dec042.error.Error">
+		select*from dec04_error where e_what 
+			like '%'||#{e_what}||'%' order by e_where		
+	</select>
 </mapper>
