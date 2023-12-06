@@ -1,3 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kwak.miniproject.sns.SNSMapper"></mapper>
+<mapper namespace="com.kwak.miniproject.sns.SNSMapper">
+	<delete id="deleteMsg"
+		parameterType="com.kwak.miniproject.sns.SNSMsg">
+		delete from sns
+			where s_no = #{s_no}
+	</delete>
+	<delete id="deleteReply"
+		parameterType="com.kwak.miniproject.sns.SNSReply">
+		delete from sns_reply
+			where sr_no = #{sr_no}
+	</delete>
+	<select id="getAllMsgCount" resultType="java.lang.Integer">
+		select count(*)	from member, sns where id = s_writer
+	</select>
+	<select id="getSearchMsgCount"
+		parameterType="com.kwak.miniproject.sns.SNSSelector"
+		resultType="java.lang.Integer">
+		select count(*) from member, sns
+			where id = s_writer
+			and (s_text like '%'||#{search}||'%' or id like '%'||#{search}||'%')
+	</select>
+	<select id="getMsg"
+		parameterType="com.kwak.miniproject.sns.SNSSelector"
+		resultType="com.kwak.miniproject.sns.SNSMsg">
+		select * from (
+			select rownum as rn, photo, id, s_text, s_when, s_no
+				from ( select * from member, sns
+				where id = s_writer
+					and (s_text like '%'||#{search}||'%' or id like '%'||#{search}||'%')
+					order by s_when desc ))
+			where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getReply"
+		parameterType="com.kwak.miniproject.sns.SNSMsg" 
+		resultType="com.kwak.miniproject.sns.SNSReply">
+		select *
+			from sns_reply
+				where sr_s_no = #{s_no}
+				order by sr_when
+	</select>
+	<insert id="writeMsg" parameterType="com.kwak.miniproject.sns.SNSMsg">
+		insert into sns values(sns_seq.nextval, #{id}, #{s_text}, sysdate)
+	</insert>
+	<insert id="writeReply"	parameterType="com.kwak.miniproject.sns.SNSReply">
+		insert into sns_reply values(sns_reply_seq.nextval, #{sr_s_no}, #{sr_writer}, #{sr_text}, sysdate)
+	</insert>
+	<update id="updateMsg"
+		parameterType="com.kwak.miniproject.sns.SNSMsg">
+		update sns
+			set s_text = #{s_text}
+			where s_no = #{s_no}
+	</update>
+</mapper>

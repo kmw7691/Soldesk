@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kwak.miniproject.Member.MemberMapper"></mapper>
+<mapper namespace="com.kwak.miniproject.Member.MemberMapper">
+	<select id="getMemberById" parameterType="com.kwak.miniproject.member.Member" 
+							resultType="com.kwak.miniproject.member.Member">
+		select * from member where id = #{id}
+	</select>
+	<insert id="join" parameterType="com.kwak.miniproject.member.Member">
+		insert into member values(#{id}, #{pw}, #{name}, #{addr}, #{photo}, #{role})
+	</insert>
+	<delete id="bye" parameterType="com.kwak.miniproject.member.Member">
+		delete from member where id = #{id}	
+	</delete>
+	<update id="update" parameterType="com.kwak.miniproject.member.Member">
+		update member set pw = #{pw}, name = #{name}, addr = #{addr}, photo = #{photo}
+			where id = #{id}
+	</update>
+</mapper>
