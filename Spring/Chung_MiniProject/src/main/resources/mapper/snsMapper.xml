@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chung.chungminip.sns.SNSMapper">
+	<delete id="deleteMsg"
+		parameterType="com.chung.chungminip.sns.SNSMsg">
+		delete from chung_sns
+		where c_no = #{c_no}
+	</delete>
+	<delete id="deleteReply"
+		parameterType="com.chung.chungminip.sns.SNSReply">
+		delete from chung_sns_reply
+		where cr_no = #{cr_no}
+	</delete>
+	<select id="getAllMsgCount" resultType="java.lang.Integer">
+		select count(*)	from chung_memeber, chung_sns where c_id = c_owner
+	</select>
+	<select id="getSearchMsgCount"
+		parameterType="com.chung.chungminip.sns.SNSSelector"
+		resultType="java.lang.Integer">
+		select count(*) from chung_memeber, chung_sns
+		where c_id = c_owner
+		and (c_txt like '%'||#{search}||'%' or c_id like '%'||#{search}||'%')
+	</select>
+	<select id="getMsg"
+		parameterType="com.chung.chungminip.sns.SNSSelector"
+		resultType="com.chung.chungminip.sns.SNSMsg">
+		select * from (
+		select rownum as rn, c_photo, c_id, c_txt, c_when, c_color, c_no
+		from ( select * from chung_memeber, chung_sns
+		where c_id = c_owner
+		and (c_txt like '%'||#{search}||'%' or c_id like '%'||#{search}||'%')
+		order by c_when desc ))
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getReply"
+		parameterType="com.chung.chungminip.sns.SNSMsg" resultType="com.chung.chungminip.sns.SNSReply">
+		select *
+		from chung_sns_reply
+		where cr_c_no = #{c_no}
+		order by cr_when
+	</select>
+	<insert id="writeMsg" parameterType="com.chung.chungminip.sns.SNSMsg">
+		insert into chung_sns values(chung_sns_seq.nextval, #{c_id}, #{c_txt}, sysdate, #{c_color})
+	</insert>
+	<insert id="writeReply"	parameterType="com.chung.chungminip.sns.SNSReply">
+		insert into chung_sns_reply values(chung_sns_reply_seq.nextval, #{cr_c_no}, #{cr_owner}, #{cr_txt}, sysdate)
+	</insert>
+	<update id="updateMsg"
+		parameterType="com.chung.chungminip.sns.SNSMsg">
+		update chung_sns
+		set c_txt = #{c_txt}
+		where c_no = #{c_no}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chung.chungminip.Member.MemberMapper">
+	<select id="getMemberById" parameterType="com.chung.chungminip.Member.Member" resultType="com.chung.chungminip.Member.Member">
+		select * from chung_memeber where c_id = #{c_id}
+	</select>
+	<insert id="join" parameterType="com.chung.chungminip.Member.Member">
+		insert into chung_memeber values(#{c_id}, #{c_pw}, #{c_name}, #{c_addr}, #{c_photo}, #{c_role})
+	</insert>
+	<delete id="bye" parameterType="com.chung.chungminip.Member.Member">
+		delete from chung_memeber where c_id = #{c_id}	
+	</delete>
+	<update id="update" parameterType="com.chung.chungminip.Member.Member">
+		update chung_memeber set c_pw = #{c_pw}, c_name = #{c_name}, c_addr = #{c_addr}, c_photo = #{c_photo}
+		where c_id=#{c_id}
+	</update>
+</mapper>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +28,10 @@
 					//alert(JSON.stringify(bookJSON));
 					//내가 검색한 검색어가 포함된 책들을
 					//	이미지(사진), 책제목, 출판사, 정가, 판매가 뽑아서 테이블 구성
-					$('table').empty();
 					
+					
+					$('table').empty();
+					/*
 					let td1 = $('<td></td>').text('title');
 					let td2 = $('<td></td>').text('publisher');
 					let td3 = $('<td></td>').text('price');
@@ -37,30 +39,41 @@
 					
 					let trr = $('<tr></tr>').append(td1, td2, td3, td4);
 					$('table').prepend(trr);
-					
-					$(bookJSON).find('documents').each(function(i,b){
-						let title = $(b).find('title').text();
-						let publisher = $(b).find('publisher').text();
-						let price = $(b).find('price').text();
-						let sale_price = $(b).find('sale_price').text();
+					*/
+					$.each(bookJSON.documents, function(i,b){
+						//alert(b.title);
 						
-						let titleTd = $('<td align="center"></td>').text(title);
-						let pubTd = $('<td align="center"></td>').text(publisher);
-						let priceTd = $('<td align="center"></td>').text(price);
-						let saleTd = $('<td align="center"></td>').text(sale_price);
+						let img = $('<img>').attr('src', b.thumbnail);
+						let td0 = $('<td></td>').append(img);
+						let td1 = $('<td></td>').text(b.title);
+						let td2 = $('<td></td>').text(b.publisher);
+						let td3 = $('<td></td>').text(b.price);
+						let td4 = $('<td></td>').text(b.sale_price);
 						
-						let tr = $('<tr></tr>').append(titleTd, pubTd, priceTd, saleTd);
-						
-						$('table').append(tr);
+						let trr = $('<tr></tr>').append(td0, td1, td2, td3, td4);
+						$('table').append(trr);
 					});
-				}
+					
+					let th0 = $('<th></th>').text('image');
+					let th1 = $('<th></th>').text('title');
+					let th2 = $('<th></th>').text('publisher');
+					let th3 = $('<th></th>').text('price');
+					let th4 = $('<th></th>').text('sale_price');
+					
+					let trr = $('<tr></tr>').append(th0, th1, th2, th3, th4);
+					$('table').prepend(trr);
+					}
+				});
 			});
+		$('input').keyup(()=>{
+			$('button').trigger('click');
 		});
 	});
 </script>
 </head>
 <body>
-	<input><button>검색</button>
+	<input>
+	<button>검색</button>
 	<hr>
 	<table border="1"></table>
 </body>
