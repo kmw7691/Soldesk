@@ -6,20 +6,18 @@ public class Member {
 	private String name;
 	private String addr;
 	private String photo;
-	private String role;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String id, String pw, String name, String addr, String photo, String role) {
+	public Member(String id, String pw, String name, String addr, String photo) {
 		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.addr = addr;
 		this.photo = photo;
-		this.role = role;
 	}
 
 	public String getId() {
@@ -62,12 +60,6 @@ public class Member {
 		this.photo = photo;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 	
 }

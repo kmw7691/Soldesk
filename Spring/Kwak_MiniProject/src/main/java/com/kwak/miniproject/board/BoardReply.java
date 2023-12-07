@@ -1,20 +1,20 @@
-package com.kwak.miniproject.sns;
+package com.kwak.miniproject.board;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class SNSReply {
+public class BoardReply {
 	private BigDecimal sr_no;
 	private BigDecimal sr_s_no;
 	private String sr_writer;
 	private String sr_text;
 	private Date sr_when;
 	
-	public SNSReply() {
+	public BoardReply() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SNSReply(BigDecimal sr_no, BigDecimal sr_s_no, String sr_writer, String sr_text, Date sr_when) {
+	public BoardReply(BigDecimal sr_no, BigDecimal sr_s_no, String sr_writer, String sr_text, Date sr_when) {
 		super();
 		this.sr_no = sr_no;
 		this.sr_s_no = sr_s_no;

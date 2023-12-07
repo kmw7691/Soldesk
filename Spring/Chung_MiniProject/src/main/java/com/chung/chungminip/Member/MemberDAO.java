@@ -46,12 +46,12 @@ public class MemberDAO {
 				
 				//필요없음
 				
-//				String dm_photo = m.getC_photo();
-//				dm_photo = URLDecoder.decode(dm_photo, "utf-8");
+				String dm_photo = m.getC_photo();
+				dm_photo = URLDecoder.decode(dm_photo, "utf-8");
 
-//				String path = req.getSession().getServletContext().getRealPath("resources/img");
+				String path = req.getSession().getServletContext().getRealPath("resources/img");
 
-//				new File(path + "/" + dm_photo).delete();
+				new File(path + "/" + dm_photo).delete();
 
 			} else {
 				req.setAttribute("r", "탈퇴 실패");

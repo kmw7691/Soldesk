@@ -5,13 +5,14 @@ create table member(
 	pw varchar2(10 char) not null,
 	name varchar2(10 char) not null,
 	addr varchar2(200 char) not null,
-	photo varchar2(200 char) not null,
-	role char(1 char) not null
+	photo varchar2(200 char) not null
 );
+
+drop table member;
 
 select*from member;
 
-insert into member values('asd', '12', 'name', 'aaaassss', 'a.png', 'M')
+insert into member values('asd', '12', 'name', 'aaaassss', 'a.png')
 
 
 ------------------------------

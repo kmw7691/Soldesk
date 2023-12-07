@@ -9,7 +9,7 @@
 <body>
 	<table id="home">
 		<tr>
-			<td><img src="resources/img/#.png"></td>
+			<td><img src="resources/img/home.png"></td>
 		</tr>
 	</table>
 </body>

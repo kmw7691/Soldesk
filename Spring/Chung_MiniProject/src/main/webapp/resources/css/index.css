@@ -1,5 +1,5 @@
 @charset "UTF-8";
-::-webkit-scrollbar{
+::-webkit-scrollbar{ /*스크롤바 안보이게한거*/
 	display: none;
 }
 @font-face {

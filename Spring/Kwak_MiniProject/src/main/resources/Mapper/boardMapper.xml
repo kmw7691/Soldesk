@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kwak.miniproject.sns.SNSMapper">
+<mapper namespace="com.kwak.miniproject.board.BoardMapper">
 	<delete id="deleteMsg"
-		parameterType="com.kwak.miniproject.sns.SNSMsg">
+		parameterType="com.kwak.miniproject.board.BoardMsg">
 		delete from sns
 			where s_no = #{s_no}
 	</delete>
 	<delete id="deleteReply"
-		parameterType="com.kwak.miniproject.sns.SNSReply">
+		parameterType="com.kwak.miniproject.board.BoardReply">
 		delete from sns_reply
 			where sr_no = #{sr_no}
 	</delete>
@@ -15,15 +15,15 @@
 		select count(*)	from member, sns where id = s_writer
 	</select>
 	<select id="getSearchMsgCount"
-		parameterType="com.kwak.miniproject.sns.SNSSelector"
+		parameterType="com.kwak.miniproject.board.BoardSelector"
 		resultType="java.lang.Integer">
 		select count(*) from member, sns
 			where id = s_writer
 			and (s_text like '%'||#{search}||'%' or id like '%'||#{search}||'%')
 	</select>
-	<select id="getMsg"
-		parameterType="com.kwak.miniproject.sns.SNSSelector"
-		resultType="com.kwak.miniproject.sns.SNSMsg">
+	<select id="searchMsg"
+		parameterType="com.kwak.miniproject.board.BoardSelector"
+		resultType="com.kwak.miniproject.board.BoardMsg">
 		select * from (
 			select rownum as rn, photo, id, s_text, s_when, s_no
 				from ( select * from member, sns
@@ -33,23 +33,23 @@
 			where rn &gt;= #{start} and rn &lt;= #{end}
 	</select>
 	<select id="getReply"
-		parameterType="com.kwak.miniproject.sns.SNSMsg" 
-		resultType="com.kwak.miniproject.sns.SNSReply">
+		parameterType="com.kwak.miniproject.board.BoardMsg" 
+		resultType="com.kwak.miniproject.board.BoardReply">
 		select *
 			from sns_reply
 				where sr_s_no = #{s_no}
 				order by sr_when
 	</select>
-	<insert id="writeMsg" parameterType="com.kwak.miniproject.sns.SNSMsg">
-		insert into sns values(sns_seq.nextval, #{id}, #{s_text}, sysdate)
+	<insert id="writeMsg" parameterType="com.kwak.miniproject.board.BoardMsg">
+		insert into sns values(sns_seq.nextval, #{id, jdbcType=VARCHAR}, #{s_text, jdbcType=VARCHAR}, sysdate)
 	</insert>
-	<insert id="writeReply"	parameterType="com.kwak.miniproject.sns.SNSReply">
-		insert into sns_reply values(sns_reply_seq.nextval, #{sr_s_no}, #{sr_writer}, #{sr_text}, sysdate)
+	<insert id="writeReply"	parameterType="com.kwak.miniproject.board.BoardReply">
+		insert into sns_reply values(sns_reply_seq.nextval, #{sr_s_no}, #{sr_writer, jdbcType=VARCHAR}, #{sr_text, jdbcType=VARCHAR}, sysdate)
 	</insert>
 	<update id="updateMsg"
-		parameterType="com.kwak.miniproject.sns.SNSMsg">
+		parameterType="com.kwak.miniproject.board.BoardMsg">
 		update sns
-			set s_text = #{s_text}
+			set s_text = #{s_text, jdbcType=VARCHAR}
 			where s_no = #{s_no}
 	</update>
 </mapper>

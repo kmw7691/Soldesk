@@ -44,7 +44,7 @@
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:Mapper/MemberMapper.xml</beans:value>
-				<beans:value>classpath:Mapper/snsMapper.xml</beans:value>
+				<beans:value>classpath:Mapper/boardMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -54,6 +54,9 @@
 			ref="sqlSessionFactory" />
 	</beans:bean>
 	
+	<beans:bean id="so" class="com.kwak.miniproject.SiteOption">
+		<beans:property name="snsMsgPerPage" value="5"></beans:property>
+	</beans:bean>	
 
 </beans:beans>
 

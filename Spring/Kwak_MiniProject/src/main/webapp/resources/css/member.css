@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+#loginTbl {
+	margin-left: 30px;
+}
+
+#loginTbl .i1 {
+	font-family: "b";
+	font-weight: 900;
+	font-size: 12pt;
+	text-align: center;
+	border: #EAEFF9 solid 3px;
+	background-color: transparent;
+	border-radius: 10px;
+	height: 30px;
+	width: 130px;
+}
+
+#loginTbl button {
+	border: none;
+	background-color: transparent;
+	font-family: "b";
+	font-weight: 900;
+	font-size: 12pt;
+	width: 90px;
+	text-shadow: white 2px 2px 2px;
+}
+#loginTbl button:hover{
+	text-shadow: 0px 0px 5px white;
+}
+
+#joinTbl {
+	margin-top: 50px;
+	width: 700px;
+	font-family: "b";
+	font-size: 15pt;
+	font-weight: 900;
+}
+
+#joinTbl .i1 {
+	font-family: "b";
+	font-size: 15pt;
+	font-weight: 900;
+	border: #EAEFF9 solid 3px;
+	width: 90%;
+	padding: 10px;
+	height: 30px;
+	background-color: #ADB1B0AA;
+	width: 90%;
+	border-radius: 10px;
+}
+
+#joinTbl td {
+	height: 60px;
+}
+
+#joinTbl button {
+	font-family: "b";
+	font-size: 15pt;
+	font-weight: 900;
+	border: black solid 3px;
+	width: 90%;
+	padding: 10px;
+	height: 70px;
+	background-color: #EAEFF9AA;
+	width: 90%;
+	border-radius: 10px;
+}
+
+#loginMemberImg {
+	height: 40px;
+	box-shadow: 3px 3px 3px white;
+	border-radius: 5px;
+}
+
+#loginMemberID {
+	font-family: "a";
+	color: white;
+	padding-left: 10px;
+	font-size: 14pt;
+}
+
+.loginMemberBtn {
+	border: none;
+	background-color: transparent;
+	font-family: "b";
+	font-weight: 900;
+	font-size: 12pt;
+	width: 90px;
+	text-shadow: white 2px 2px 2px;
+}
+
+.loginMemberBtn:hover {
+	text-shadow: 0px 0px 5px white;
+}
