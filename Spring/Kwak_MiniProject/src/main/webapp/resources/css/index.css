@@ -1,132 +1,149 @@
 @charset "UTF-8";
-::-webkit-scrollbar{ /*스크롤바 안보이게한거*/
+
+::-webkit-scrollbar { /*스크롤바 안보이게한거*/
 	display: none;
 }
+
 @font-face {
 	font-family: "a";
 	src: url("a.ttf");
 }
+
 @font-face {
 	font-family: "b";
 	src: url("d.ttf");
 }
+
 @font-face {
 	font-family: "c";
 	src: url("c.ttf");
 }
-a{
+
+a {
 	text-decoration: none;
 }
-button{
+
+button {
 	cursor: pointer;
 }
-table{
+
+table {
 	border-spacing: 0px;
 }
+
 body {
 	margin: 0px;
 	padding: 0px;
 	background-image: url("../img/bgimg.png");
 	background-size: cover;
 	background-attachment: fixed;
-	opacity:1;
-	transition:all 0.7s ease-out;
+	opacity: 1;
+	transition: all 0.7s ease-out;
 }
-input, button, textarea{
-	outline:none;
+
+input, button, textarea {
+	outline: none;
 }
-#r{
+
+#r {
 	position: fixed;
-	color:#C62828;
+	color: #C62828;
 	text-shadow: white 2px 2px 2px;
 	font-family: "b";
 	font-weight: 900;
-	font-size:13pt;
-	left:73%;
-	top:30px;
+	font-size: 13pt;
+	left: 73%;
+	top: 30px;
 	z-index: 99;
 }
+
 #siteTitleArea {
 	position: fixed;
-	top:-92px;
+	top: -92px;
 	width: 100%;
 	height: 90px;
 	background-color: #ADB1B0AA;
-	transition:all 0.7s ease-out;
+	transition: all 0.7s ease-out;
 }
-#siteTitleArea2{
+
+#siteTitleArea2 {
 	width: 1000px;
 	height: 90px;
 }
-#v{
-	color:#546E7A;
+
+#v {
+	color: #546E7A;
 	text-shadow: white 2px 2px 2px;
 	font-size: 12pt;
 }
-#siteTitle a{
+
+#siteTitle a {
 	font-family: "b";
 	font-size: 23pt;
 	font-weight: 900;
 	height: 60px;
-	color:blue;
+	color: blue;
 	text-shadow: #546E7A 3px 3px 3px;
 }
 
-#siteSubTitle{
-	opacity:0;
+#siteSubTitle {
+	opacity: 0;
 	font-family: "c";
-	font-size: 15pt;
-	font-weight: 900;	
-	color:#BDBDBD;
+	font-size: 20pt;
+	font-weight: 900;
+	color: aqua;
 	text-shadow: gray 3px 3px 3px;
-	transition:all 0.7s ease-out;
+	transition: all 0.7s ease-out;
 }
-#siteMenuArea{
-	font-family:"a";
+
+#siteMenuArea {
+	font-family: "a";
 	position: fixed;
-	width:50%;
-	height:50px;
-	left:-50%;
-	top:92px;
-	background-color: #ADB1B0AA;
-	color:white;
-	transition:all 0.3s ease-out;
+	width: 50%;
+	height: 50px;
+	left: -50%;
+	top: 92px;
+	background-color: #FFC0CB70;
+	color: white;
+	transition: all 0.3s ease-out;
 }
-#siteMenuArea2{
+
+#siteMenuArea2 {
+	opcity:0.5;
 	width: 500px;
 }
-#siteMenuArea2 td{
+
+#siteMenuArea2 td {
 	width: 33%;
 }
-#siteMenuArea2 img{
+
+#siteMenuArea2 img {
 	width: 30px;
 }
-#siteMenuArea2 img:hover{
+
+#siteMenuArea2 img:hover {
 	width: 25px;
 }
-#siteLoginArea{
-	font-family:"a";
+
+#siteLoginArea {
+	font-family: "a";
 	position: fixed;
-	width:50%;
-	height:50px;
-	right:-50%;
-	top:92px;
-	background-color: #ADB1B0AA;
-	color:white;
-	transition:all 0.4s ease-out;
+	width: 50%;
+	height: 50px;
+	right: -50%;
+	top: 92px;
+	background-color:#FF00FF50;
+	color: white;
+	transition: all 0.4s ease-out;
 }
-#siteContentArea{
+
+#siteContentArea {
 	margin-left: auto;
 	margin-right: auto;
-	padding-top:170px;
+	padding-top: 170px;
 	width: 1000px;
 }
 
-#home .img{
-	 background-size: cover;
-	 position:fixed;
-	 height:1000px;
-	 width:1500px;
-						
+#home {
+	
 }
-
