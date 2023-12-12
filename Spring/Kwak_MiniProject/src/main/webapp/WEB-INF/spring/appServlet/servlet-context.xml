@@ -45,6 +45,7 @@
 			<beans:list>
 				<beans:value>classpath:Mapper/MemberMapper.xml</beans:value>
 				<beans:value>classpath:Mapper/boardMapper.xml</beans:value>
+				<beans:value>classpath:Mapper/gallMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

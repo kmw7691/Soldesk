@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kwak.miniproject.gall.GallMapper">
+
+	<delete id="delete" parameterType="com.kwak.miniproject.gall.Gall">
+		delete from gall where g_no=#{g_no}
+	</delete>
+	
+	<insert id="upload" parameterType="com.kwak.miniproject.gall.Gall">
+		insert into gall values(gall_seq.nextval, #{g_photo}, sysdate)
+	</insert>	
+
+</mapper>

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<c:if test="${curPage != 1 }">
-		<table>
+		<table id="snsL">
 			<tr>
 				<td align="center" onclick="snsPageChange(${curPage-1})">&lt;</td>
 			</tr>
@@ -34,7 +34,7 @@
 						<table id="snsSearchTable">
 							<tr>
 								<td id="sstTd1"><input name="search" maxlength="10"
-									autocomplete="off" placeholder="찾기"></td>
+									autocomplete="off" placeholder="게시글 찾기"></td>
 								<td id="sstTd2"><input type="image"
 									src="resources/img/search.png" style="width: 30px;"></td>
 							</tr>
@@ -52,7 +52,7 @@
 						<input name="token" value="${token }" type="hidden">
 						<table id="snsWriteTable">
 							<tr>
-								<td id="swtTd1"><textarea name="s_text" placeholder="뭐"
+								<td id="swtTd1"><textarea name="s_text" placeholder="게시글 쓰기"
 										maxlength="250"></textarea></td>
 								<td id="swtTd2"><input type="image"
 									src="resources/img/write.png" style="width: 30px;"></td>
@@ -63,6 +63,8 @@
 			</tr>
 		</table>
 	</c:if>
+	
+	
 	<c:forEach var="sm" items="${msgs }">
 		<table class="sm">
 			<tr>

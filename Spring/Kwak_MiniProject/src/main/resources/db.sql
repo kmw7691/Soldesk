@@ -16,8 +16,15 @@ insert into member values('asd', '12', 'name', 'aaaassss', 'a.png')
 
 
 ------------------------------
-
-
+drop table gall;
+create table gall(
+	g_no number(4) primary key,
+	g_photo varchar2(200char) not null,
+	g_when date not null
+);
+create sequence gall_seq;
+drop sequence gall_seq;
+--
 create table sns(
 	s_no number(4) primary key,
 	s_writer varchar2(10 char) not null,

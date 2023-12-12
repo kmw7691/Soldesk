@@ -4,7 +4,6 @@
 	width: 90%;
 	border-radius: 10px;
 	background-color: #ffffff33;
-	background-image: url("../img/pado.png");
 	background-size: 25%;
 	background-repeat: no-repeat;
 	background-position: right bottom;
@@ -41,6 +40,13 @@
 	padding-left: 13px;
 	font-weight: 900;
 	word-break: break-all;
+	
+	background-color: #BFCACA;
+	border:pink solid 5px;
+	border-radius: 10px;
+	resize:none;
+	width:500px;
+	height:100px;
 }
 
 .sm button {
@@ -59,13 +65,6 @@
 	transition: all 0.4s ease-out;
 }
 
-#snsWriteArea2 {
-	position: fixed;
-	bottom: 2px;
-	left:-413px;
-	width: 450px;
-	transition: all 0.4s ease-out;
-}
 #snsWriteTable {
 	width: 410px;
 	border-spacing: 0px;
@@ -130,7 +129,6 @@
 	width: 340px;
 	font-family: "c";
 }
-
 #snsL {
 	position: fixed;
 	left: 0px;
