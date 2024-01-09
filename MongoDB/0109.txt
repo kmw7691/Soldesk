@@ -1,0 +1,408 @@
+db.blog.posts.updateOne(
+... {'title':'A blog post'},
+... {$push:{'contents':
+... {'name':'joe','email':'joe@eample.com','content':'nice post'}
+... }})
+
+--------------------------------------------
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{'top10':['Green Eggs and Ham']}}
+)
+
+-------------------------------------------
+
+#한번에 여러개의 값 추가 : $each
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{'top10':{$each:['Nightmare on Elm Street', 'Saw']}}})
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{'top10':{$each:['스타워치','겨울왕국','증인']
+				       $slice:-10}}})
+
+$slice의 -10은 도큐먼트가 10개 이하면 추가를하고 10이 되면끝.
+10이 넘어가면 앞에부터 삭제
+
+-----------------------------------------
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$set:{'top10':'[]'}})
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{'top10':{$each:['Nightmare on Elm Street', 'Saw']}}})
+
+
+$each를 사용하기 위해서는 필드가 배열 이어야 함
+
+> db.blog.posts.updateOne(
+...   { 'title': 'A blog post' },
+...   {
+...     $push: {
+...       'top10': {
+...         $each: [
+...           { 'name': '곽민우', 'rating': 4.3 },
+...           { 'name': 'saw', 'rating': 6.6 }
+...         ],
+...         $slice: -10,
+...         $sort: { 'rating': -1 }
+...       }
+...     }
+...   }
+... )
+
+--
+
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{
+				'hourly':{
+					$each:[123,562,444,555,965,445]}}}
+)
+
+
+-------------------------------------------
+
+##중복데이터가 없이 추가
+db.users.insertOne({
+	'_id' : ObjectId(),
+	'username' : 'joe',
+	'email' : [
+		'joe@example.com',
+		'joe@naver.com',
+		'joe@daum.net'
+	]
+})
+
+db.users.updateOne({'username':'joe'},
+		{$addToSet: {'email' : 'joe@example.com'}}
+)
+
+db.users.findOne({'username':'joe'})
+
+#addToSet : 값이 중복되면 추가 x
+
+db.users.updateOne({'username':'joe'},
+		{$addToSet: {'email' : 'joe@nate.com'}}
+)
+
+---
+
+//고유의 값을 여러개 추가하려면 $addToSet과 $each를 결합하면 된다
+db.users.updateOne({'username' : 'joe'},
+		{$addToSet:{
+			'email': {
+				$each: 
+					['joe.php.net','joe@example.com','joe@python.org']
+				}
+			}
+		}
+)
+
+-----------------------------------
+
+#요소제거 : $pull
+db.users.updateOne({'username': 'joe'},
+		{$pull:{'email': 'joe@python.org'}
+})
+
+-------------------------------------
+
+//배열의 위치(index) 기반 변경
+db.blog.posts.findOne({'title':'A blog post'})
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{'contents' : 
+				{
+					'name': 'kwak',
+					'email' : 'kwak@example.com',
+					'content': 'kwak post'
+				}
+	}}
+)
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$push:{'contents' : 
+				{
+					'name': 'jang',
+					'email' : 'jang@example.com',
+					'content': 'jang post'
+				}
+	}}
+)
+
+db.blog.posts.updateOne({'title':'A blog post'},
+			{$set:{'contents.1.name': '곽민우'}}
+)
+
+db.blog.posts.updateOne({'contents.name': '곽민우'},
+			{$set: {'contents.$.email': '곽민우@example.com'}}
+)
+* $ : 조건에 맞는 index를 가져온다
+
+----------------------------------------------
+
+#갱신 입력
+var blog = db.analytics.findOne({url: '/blog'])
+if(blog){
+	db.analytics.findOne({url: '/blog'],
+			{$inc:{pageViews: 1}}
+ );
+}else{
+	db.analytics.insertOne({url: '/blog'],
+}
+
+db.analytics.insertOne(
+{'_id' : ObjectId(),
+ 'url' : 'www.example.com',
+ 'pageViews' : 53
+})
+
+db.analytics.find()
+
+db.analytics.updateOne({'url': 'www.example.com'},
+			{$inc: {'rep':3}},
+			{'upset':true}
+)
+
+
+---------------------------------
+db.blog.posts.findOne({'title': 'A blog post'})
+db.blog.posts.updateOne(
+	{'title': 'A blog post'},
+	{
+		$set:{'top10.$[elem].subject': '제목'}
+	},
+	{
+	arrayFilters:[
+		{'elem.rating': {$lte: 5}}
+	]
+	}
+)
+*lte : 5 = 5이하
+*gte : 6 = 6이상
+
+
+--------------------------------------
+db.users.insertMany([
+{'_id': ObjectId(), 'name':'joe', 'age': 65, 'sex': 'male', 'location': 'wisconsin'},
+{'_id': ObjectId(), 'name':'joe', 'age': 21, 'sex': 'male', 'location': 'wisconsin'},
+{'_id': ObjectId(), 'name':'joe', 'age': 49, 'sex': 'male', 'location': 'wisconsin'}
+])
+
+#다중 도큐먼트 갱신
+db.users.updateMany({'name' : 'joe'},
+		{$set: {'gift': 'Happy Birthday!'}})
+
+----------------------------------
+
+db.users.find()
+#쿼리 : find()
+db.people.find()
+
+#score 가 10050인것만 출력
+db.people.find({'score':10050})
+#age가 65인 것만 출력
+db.users.find({'age':65})
+#name이 joe고 age가 65인거
+db.users.find({'name':'joe', 'age' : 65})
+
+db.users.find({},{'name': 1, 'age' : 1, 'location': 1})
+#id는 제거
+db.users.find({},{'name': 1, 'age' : 1, 'location': 1, '_id': 0})
+#id만 제거하고 다출력
+db.users.find({},{'_id': 0})
+
+#name만 빼고
+db.users.find({},{'name': 0})
+#_id제외하고 name제외
+db.users.find({},{'name': 0,'_id':0})
+
+#쿼리 조건절
+< $lt (little)
+<= $lte (little equal)
+> $gt (great)
+>= $gte (great equal)
+*ne (not equal)
+
+db.users.find({'age':{'$gte' : 18 , $lte : 30}})
+#age가 21이 아닌것만 모두 출력
+db.users.find({'age': {'$ne' : 21}})
+
+db.users.find({'age' : {'$in': [21,65]}})
+
+db.users.find({'age' : {'$in': [21,65]}})
+
+
+
+db.users.updateMany({'name':'joe'},
+		{'$set':{'birthday':'10/13/1978'}})
+
+
+
+start = new Date('01/01/2007')
+
+db.users.find({'age' : {'$in': [21,65]}})
+
+db.users.find({'birthday':{'$ne' : start }})
+
+=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-
+
+db.users.updateOne({'age':21},{$set:{'location':'부산'}})
+db.users.updateOne({'age':49},{$set:{'location':'서울'}})
+
+#여러개의 필드를 비교
+#select * from users
+where age=49 or location='부산'
+
+db.users.find({'$or': [{'age': 49},{'location':'부산'}]})
+
+db.users.find({'$or':[{'age': {$nin: [49,21]}},{'location':'부산'}]})
+
+### $not
+#나머지
+db.users.find({'age': {'$mod' : [5,1]}})
+
+db.users.find({'age': {'$not' : {'$mod':[5,1]}}})
+
+
+
+
+########
+
+형 특정 쿼리
+#null
+db.c.insertMany([
+{'_id':ObjectId(), 'y':null},
+{'_id':ObjectId(), 'y':1},
+{'_id':ObjectId(), 'y':2}
+])
+
+db.c.find({'y':null})
+
+db.c.find({'z':null}) ->비교대상인 z가 없기때문에 다출력됨
+
+#필드가 존재하는 경우에만 출력
+db.c.find({'z':{'$eq' :null, '$exists':true}})
+db.c.find({'y':{'$eq' :null, '$exists':true}})
+
+----------------
+
+
+#배열에 쿼리하기
+db.food.insertOne({'fruit':['apple','banana','peach']})
+db.food.find()
+
+db.food.find({'fruit':'apple'})
+
+#2개 이상의 요소가 일치하는 배열을 찾을때
+db.food.insertMany([
+  { 'fruit': ['apple', 'kumpuat', 'orange'] },
+  { 'fruit': ['cherry', 'banana', 'apple'] }
+])
+
+db.food.find({'fruit': {'$all':['apple','banana']}})
+db.food.find({'fruit': {'$all':['apple','orange']}})
+
+#배열요소의 순서가 일치하는 경우
+db.food.find({'fruit': ['apple','kumpuat','orange']})
+#배열요소의 순서가 일치하지 않는경우
+db.food.find({'fruit': ['apple','orange','kumpuat']})
+#$all 사용시 요소 순서 상관없이 출력
+db.food.find({'fruit': {'$all':['apple','orange','kumpuat']}})
+
+#index가 2인요소가 peach인것만
+db.food.find({'fruit': 'peach'})
+db.food.find({'fruit.2': 'peach'})
+db.food.find({'fruit.1': 'peach'})
+
+db.food.updateOne({'fruit.2':'peach'},
+		{'$push':{'fruit':'kiwi'}})
+
+#배열의 사이즈로
+db.food.find({'fruit':{$size:3}})
+db.food.find({'fruit':{$size:4}})
+
+#배열갱신
+db.food.update({'fruit':'banana'},{'$push':{'fruit':'strawberry'}})
+
+var citeria = {'fruit':'banana'}
+db.food.update(citeria,{'$push':{'fruit':'strawberry'}})
+db.food.update(citeria,{'$push':{'fruit':'strawberry'},{'$inc':{'size':1}})
+
+
+#size - 필드의 값이 1보다 큰것만 출력
+db.food.find({'size':{'$gte':1}})
+
+
+#slice연산자
+db.blog.posts.findOne({'title':'A blog post'})
+# 2개 띄고 2개 가져오기
+db.blog.posts.findOne({'title':'A blog post'},{'contents':{$slice: [2,2]}})
+#위에서 2개 가져오기
+db.blog.posts.findOne({'title':'A blog post'},{'contents':{$slice: 2}})
+#밑에서 2개 개져오기
+db.blog.posts.findOne({'title':'A blog post'},{'contents':{$slice: -2}})
+
+#name이 jang 인 사람의 댓글만
+db.blog.posts.findOne({'contents.name':'jang'})
+db.blog.posts.findOne({'contents.name':'jang'},{'contents.$':1})
+
+
+#배열 및 범위쿼리의 상호작용
+db.collectionName.insertOne({'x':5})
+db.collectionName.insertOne({'x':15})
+db.collectionName.insertOne({'x':20})
+db.collectionName.insertOne({'x':[5,25]})
+db.collectionName.find()
+
+db.collectionName.find({'x':{'$gt':10,'$lt':20}})
+
+db.collectionName.find({'x':{'$elemMatch':{'$gt':10,'$lt':20}}})
+
+db.collectionName.insertOne({'x':[13,18]})
+
+
+-----------------------------------
+
+#내장 도큐먼트에 쿼리
+db.blog.posts.findOne({'title':'A blog post'})
+
+db.blog.posts.find({'contents.name':'joe', 'contents.email': 'joe@example.com'})
+
+db.blog.posts.find({'contents':{'name': 'joe', 'email': 'joe@example.com'}})
+
+
+
+
+db.blog.posts.find({'top10': {'name':'곽민우', 'rating':{'$lt':5}}})
+db.blog.posts.find({'top10.name':'곽민우', 'top10.rating' : {'$lt':5}})
+
+
+--------------------
+
+#제한, 건너뛰기, 정렬
+db.c.find()
+db.c.find().limit(2)
+db.c.find().skip(2)
+db.c.find().skip(1)
+db.users.find()
+db.users.find().sort({'age':1})  #오름차순
+db.users.find().sort({'age':-1}) #내림차순
+
+db.users.find().sort({'age':1}).limit(2)
+
+db.users.find().limit(2).sort({'age':1})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
