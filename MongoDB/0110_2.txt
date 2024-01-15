@@ -1,0 +1,137 @@
+db.companies.insertOne({
+  '_id': ObjectId(),
+  'category_code': 'social',
+  'founded_year': 2004,
+  'description': 'Social network',
+  'funding_rounds': [{
+    'id': 4,
+    'round_code': 'b',
+    'raised_amount': 27500000,
+    'raised_currency_code': 'USD',
+    'funded_year': 2006,
+    'investments': [
+      {
+        'company': null,
+        'financial_org': {
+          'name': 'Greylock Partners',
+          'permalink': 'greylock'
+        },
+        'person': null
+      },
+      {
+        'company': null,
+        'financial_org': {
+          'name': 'Meritech Capital Partners',
+          'permalink': 'meritech-capital-partners'
+        },
+        'person': null
+      },
+      {
+        'company': null,
+        'financial_org': {
+          'name': 'Founders Fund',
+          'permalink': 'founders-fund'
+        },
+        'person': null
+      },
+      {
+        'company': null,
+        'financial_org': {
+          'name': 'SV Angel',
+          'permalink': 'sv-angel'
+        },
+        'person': null
+      }
+    ]
+  }],
+'ipo': {
+	'valuation_amount': NumberLong('104000000000'),
+	'valuation_currency_code': 'USD',
+	'pub_year': 2012,
+	'pub_month': 5,
+	'pub_day' : 18,
+	'stock_symbol' : 'NASDAQ:F8'
+}
+})
+
+db.companies.findOne()
+
+
+#일치
+select * from companies
+	where founded_year = 2004
+
+db.companies.find({'founded_year' : 2004})
+db.companies.aggregate([{$match : {'founded_year' : 2004}}])
+
+#select name, founded_year from companies
+	where founded_year = 2004
+db.companies.find({'founded_year': 2004}, {'name':1, 'founded_year':1, '_id':0})
+db.companies.aggregate([{$match: {'founded_year': 2004}},
+			{$project: {
+				_id : 0,
+				name : 1,
+				founded_year:1
+			}}
+])
+
+db.companies.find({'found_year':2004}, {'name':1, 'founded_year':1, '_id':0}).limit(3)
+db.companies.aggregate([{$match: {'founded_year': 2004}},
+			{$project: {
+				_id : 0,
+				name : 1,
+				founded_year:1
+			}},
+			{$limit: 2}
+])
+
+
+db.companies.find({'found_year':2004}, {'name':1, 'founded_year':1, '_id':0}).limit(5).sort({'name':1})
+db.companies.aggregate([{$match: {'founded_year': 2004}},
+			{$limit: 2},
+			{$skip:10},
+			{$sort : {name:1}},
+			{$project: {
+				_id : 0,
+				name : 1,
+				founded_year:1
+			}}
+])
+
+
+
+
+#founded_rounds 필드에 있는 서브 도큐먼트에 있는 investments 필드에 있는 도큐먼트에 financial_org필드가 있고
+financial_org필드에 있는 도큐먼트에 있는 permalink필드의 값이 greylock인 것을 출력
+이때 name ipo.pub_year ipo.valuation_amount, funding_rounds.investments.financial_org.permalink출력
+
+db.companies.findOne({'funding_rounds.investments.financial_org.permalink': 'greylock'},
+			{'name':1,
+			'ipo.pub_year':1,
+			'ipo.valuation_amount':1,
+			'funding_rounds.investments.financial_org.permalink':1,
+			'_id':0
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

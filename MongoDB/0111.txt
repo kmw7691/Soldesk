@@ -1,0 +1,154 @@
+db.companies.aggregate([
+	{$match: {'funding_rounds.investments.financial_org.permalink': 'greylock'}},
+	{$project: {
+		_id:0,
+		name:1,
+		ipo: '$ipo.pub_year',
+		valuation: '$ipo.valuation_amount',
+		funders: '$funding_rounds.investments.financial_org.permalink'
+	}}
+])
+
+
+# $project에서 필드명을 줘서 출력
+db.companies.aggregate([
+	{$match: {'funding_rounds.investments.financial_org.permalink': 'greylock'}},
+	{$project: {
+		_id:0,
+		name:1,
+		ipo: '$ipo.pub_year',
+		valuation: '$ipo.valuation_amount',
+		funders: '$funding_rounds.investments.financial_org.permalink'
+	}}
+])
+
+db.companies.aggregate([
+  {
+    $match: {
+      'funding_rounds.investments.financial_org.permalink': 'greylock'
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      funded_year: 1,
+      rounds: {
+        $filter: {
+          input: '$funding_rounds',
+          as: 'round',
+          cond: { $lte: ['$$round.raised_amount', 100000000] }
+        }
+      }
+    }
+  }
+])
+#$filter는 배열 필드일 경우에만 가능
+#$filter의 첫번째 옵션은 input이며 배열을 지정함
+#두번째 옵션 as는 input에 있는 필드명에 대한 변수를 지정함
+# 세번째 옵션 cond는 condition의 약자로 input에 대한 조건을 줌
+#cond에 조건을 사용하는 경우 as에 있는 변수명을 사용할경우  '$$'를 사용해야 함
+
+
+#첫번째 라운딩과 마지막 라운딩만 꺼냄
+#배열에 있는 첫번째 값과 마지막 값을 꺼내기
+db.companies.aggregate([
+	{$match: {'founded_year': 2004}},
+	{$project: {
+		_id:0,
+		name:1,
+		founded_year:1,
+		first_round:{$arrayElemAt: ['$funding_rounds',0]},
+		last_round:{$arrayElemAt: ['$funding_rounds',-1]}
+	}}
+])
+#첫번째는 $arrayElemAt에 0을, 마지막은 $arrayElemAt에 -1을 줌
+
+#funding_rounds에서 첫줄부터 3개만
+db.companies.aggregate([
+	{$match: {'founded_year': 2004}},
+	{$project: {
+		_id:0,
+		name:1,
+		founded_year:1,
+		first_round:{$slice:['$funding_rounds', 1, 3]}
+	}}
+])
+
+#funding_rounds의 배열의 크기
+
+
+------------------------------------
+
+#누산기 : 모든 집계함수를 누산기라고 함
+db.companies.aggregate([
+	{$match:{'founded_year':2004}},
+	{$match:{'funding_rounds' : {$exists: true, $ne: []}}},
+	{$project:{
+		_id:0,
+		name:1,
+		founded_year:1,
+		largest_round:{$max: 'funding_rounds.raised_amount'}
+	}}
+])
+
+
+#그룹화 소개
+#셀렉트 절에는 집계함수 이외에 group by절에 없는 컬럼은 쓸 수 없음
+#단, 집계함수는 null을 포함하지 않음
+db.companies.aggregate([
+	{$group: {'_id' : {founded_year : '$founded_year'},
+	avg_amount : {$avg: 'funding_rounds.raised_amount'}
+	}}	
+])
+
+#$group을 사용하는 경우에는 $funding_rounds가 배열이라 배열안에 있는 값을 집계할 수 없어서 null이 나옴
+# 이문제를 해결하는 방법으로는 $unwind를 사용하여 배열을 풀어주면 됨
+db.companies.aggregate([
+	{$group: {'_id' : {founded_year : '$founded_year'},
+	avg_amount : {$avg: 'funding_rounds.raised_amount'}
+	}},
+	{$sort: {avg_amount: -1}}
+])
+
+db.companies.aggregate([
+	{$match: {'funding_rounds.raised_amount': {$ne: null}}},
+	{$unwind: '$funding_rounds'},
+	{$project : {
+		_id:0,
+		funding_rounds:1
+	}},
+	{$group: {
+		_id: '$funding_rounds',
+		count:{$sum : 1}
+	}},
+	{$sort: {count : -1}}
+])
+
+
+#relationships.person이 있을때만 수행
+relationships.person필드 이름에 대한 도큐먼트를 가진다
+person필드 안에 있는 도큐먼트는 first_name, last_name, permalink필드를 가진 도큐먼트임
+
+
+#founded_year, name을 출력하는데 founded_year가 2004인것만 출력
+#find로
+db.companies.find({'founded_year' : 2004},
+		{_id: 0, founded_year:1, name:1})
+#그룹연산자를 이용
+db.companies.aggregate([
+	{$match: {'founded_year': {$gte:2004}}},
+	{$group : {
+		_id : {founded_year: '$founded_year', category_code: '$category_code'}
+		companies: {$push: '$name'}
+	}},
+	{$sort: {'_id.founded_year': 1}}
+])
+
+
+
+
+
+
+
+
