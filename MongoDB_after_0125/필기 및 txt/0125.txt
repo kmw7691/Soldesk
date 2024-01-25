@@ -1,0 +1,132 @@
+RDB-SQL (Structured Query Language) - Oracle, MySQL, MariaDB,...
+	테이블을 만들고..(자료형, 용량 다 세팅)
+	그 규칙에 안맞으면 => 에러
+	=> 정형데이터
+
+NoSQL(No SQL, Non-Relation Optional Database SQL)
+	ex) MongoDB, ElasticSearch,..
+	=>자유
+
+=============================================
+
+MongoDB는 NoSQL계열
+Node.js (JavaScript back-end)팀에서 만든 DB -> JavaScript로 제어
+
+테이블 -> JS배열
+데이터 -> JS객체
+
+크로스 플랫폼의 document지향 Database
+높은 성능(high performance)
+높은 사용성(high availability)
+쉬운 확장성(ease scalaility) 등을 제공
+
+
+
+
+
+===============================================
+		RDBMS와 비교(용어)
+Oracle					MongoDB
+--------------------------------------------------------------
+Database					Database
+Table					Collection
+Tuple / row				Document
+Column					Field
+Primary Key				Primary Key(Default : _id)
+--------------------------------------------------------------
+1. Database
+하나의 데이터 베이스는 여러개의 컬렉션을 가질 수 있음
+
+2. Collection
+Document의 그룹이며, RDBMS의 'Table'개념
+
+3. Document
+하나의 키(key)와 값(value)의 집합으로 이루어져 있음
+동일한 필드안에 다른 타입의 데이터를 가질 수 있음
+
+
+
+############################################
+
+CRUD
+------
+use jan25_coffee
+
+coffee -> 커피이름(PK), 커피 가격 - 5개
+db.collection명.insert({속성명:값, 속성명:값,...})
+
+db.jan25_coffee.insertOne({
+	name : "청포도에이드",
+	price : 3300
+})
+
+db.jan25_coffee,find();
+
+---------------------------------------------------
+
+<SELECT>
+-결과가 JS배열 속에 JS객체의 형태로 나옴
+	=> JSON, python의 list + dict
+
+전체조회
+	db.collection명.find();
+조건검색
+	db.collection명.find({필드명 : 값})
+
+--가격이 3천원인 커피정보 조회
+db.jan25_coffee.find({price:3000});
+--가격이 3천원을 초과하는 커피정보 조회
+db.jan25_coffee.find({ price: { $gt: 3000 } });
+--커피이름에 라떼가 들어가는 커피 정보를 조회
+	where name like '%라떼%' <<문자열포함 검색
+	
+	글자 포함검색 연산자 : $regex
+db.jan25_coffee.find({name:{$regex:"라떼"}});
+
+-------------------------------------
+
+<UPDATE>
+	db.collection명.update(찾을거, 바꿀거)
+		ㄴ한계가 있음
+	db.collection명.update(찾을거, {"$set":바꿀거});
+
+-가격이 3천원 이상인 커피를 모두 무료로
+db.jan25_coffee.update({price:{$lte:2000}},{"$set":{price: "무료"}});
+	
+-영향을 받을 데이터가 여러개면 -> {multi:true}
+db.jan25_coffee.update({price:{$lte:2000}},{"$set":{price: "무료"}},{multi:true});
+
+--------------------------------------------------
+
+<DELETE>
+	db.collection명.remove(찾을거);
+
+-가격이 100원 이상인거 삭제
+db.jan25_coffee.remove({price: {"$gte":100}});
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

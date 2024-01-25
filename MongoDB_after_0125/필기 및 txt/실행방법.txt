@@ -1,0 +1,16 @@
+1. DB파일이 저장될 폴더 확보
+C:\Users\sdedu\Desktop\mongoDB_AFTER_0115
+
+2.몽고DB실행파일이 있는 위치
+C:\Program Files\MongoDB\Server\5.0\bin
+
+3. 2번의 위치에서 cmd실행
+
+4. cmd에 
+	mongod --dbpath 1번경로 --bind_ip_all 
+	mongod --dbpath C:\Users\sdedu\Desktop\mongoDB_AFTER_0115 --bind_ip_all 
+	명령어 실행
+
+5. 2번위치에서 다시 cmd실행
+	mongo
+	명령어실행
