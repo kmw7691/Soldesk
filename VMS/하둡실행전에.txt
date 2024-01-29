@@ -1,0 +1,28 @@
+Hadoop실행 전에
+
+1. 찌꺼기폴더 삭제	
+	전부다 ] rm -rf ~/hadoopTmpData
+
+2. 하둡 폴더로 이동
+	NN만]
+		cd ~/hadoop/hadoop-3.3.3
+
+3. 하둡시스템 포맷
+	NN만]
+		bin/hadoop namenode -format
+		bin/hadoop datanode -format
+
+4.시작
+	NN만]
+		sbin/start-all.sh
+
+5.확인
+	전부다]
+		jps >> 확인
+
+6.끄기
+	NN만]
+		sbin/stop-all.sh
+
+jps 다 안나왓으면 - 설정쪽에 문제 있을 가능성높음
+6번 실행후 설정파일들 한번더 확인-> 1~5 재실행
