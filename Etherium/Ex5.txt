@@ -1,0 +1,67 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Ex5{
+    //함수 (Function)
+    //  일반적으로 function키워드, 함수명, 가시성지정자의 요소가 필요
+
+    //가시성 제한자(제어자)
+    //  변수나 함수의 공개범위를 제한하는 것
+    //  함수 or 변수 등에 접근하려고 할 때 지정된 가시성 지정자에 의해
+    //      접근 여부가 달라짐
+    //      가시성 제어자를 함수명 뒤에 써주는 것이 특징
+    //      1. public : 내, 외부 모두 접근 가능
+    //      2. external : 선언된 컨트랙트 외부에서만 접근 가능
+    //      3. private : 선언된 컨트랙트 내부에서만 접근 가능
+    //      4. internal : 선언된 컨트랙트 내부 or
+    //                    컨트랙트를 상속받은 컨트랙트 안에서 접근 가능
+
+
+    //일반적인 함수의 모양
+    // function exFunc() public{
+    //     //코드
+    // }
+
+    uint public a = 10;
+    function changeA() public{
+        a = 100;
+    } //이 함수를 실행시키면 a가 100이 됨
+
+    //파라미터나 return이 필요한 경우
+    // function exFunc1(Parameter) public returns(return 값 자료형){
+    //     //코드~~
+
+    //     //return ~~;
+    // }
+
+    //두개의 정수를 받아 덧셈한 값을 반환하는 함수
+    // function addNum(uint a, uint b) public pure returns(uint){
+    //     return a + b;
+    // }
+
+    //솔리디티의 저장 영역
+    //  스토리지(storage), 메모리(Memory),
+    //  콜데이터(Calldata), 스택(stack)
+    //참조타입이 파라미터나 리턴값으로 사용될 때
+    //솔리디티의 영역 중 알맞는 하나의 저장 영역을 같이 명시해야 됨
+
+    //string을 function쓰려면 memory라는 키워드가 필요
+    
+    //스토리지(storage) : 데이터가 블록체인 상에 영구적으로 저장되는 공간
+    //메모리(Memory) : 단기적(임시적)으로 데이터를 저장하는 공간
+    //콜데이터(Calldata) : 트랜잭션 or call 함수의 파라미터가
+                            // 유지되는 읽기 전용 공간
+    //스택(Stack) : 가상머신에서 휘발성을 가진 데이터를 유지 및 관리 공간
+
+    //모디파이어(Modifier)
+    //가시성 지정자 다음에 명시하여 함수 로직에 제약을 주는 역할
+    //  pure view 가 있고 두가지 모두 해당하지 않으면 생략 가능
+    
+    //1. pure
+    //  함수 밖에 선언된 변수를 함수 내부로 가져오지 못하게 하는 키워드
+    //  순수하게 함수 내부에서 정의된 변수나, 함수파라미터만 사용 가능
+
+    //2. view
+    //  함수 외부의 변수를 읽을 수 있으나, 값을 함수 내부에서는 변경 못함
+    
+}

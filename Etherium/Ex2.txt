@@ -1,0 +1,129 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract Ex2{
+    // 변수(Variable)
+    // 선언하기 위해서는 자료형을 꼭 명시해야됨
+    // 자료형 변수명 = 값;
+    // uint a = 100;
+
+    //솔리디티의 3가지 변수타입
+    //1. 상태변수(state)
+    //  함수 밖에서 선언
+    //  블록체인에 저장되어 영속성을 가지게 됨
+    //  함수 내부 어디에서든지 사용 가능하며
+    //  가시성 지정자에 따라서 변수의 접근 범위가 달라짐
+    //  가시성지정자 = 접근제어자
+
+    // 솔리디티에선 string을 쓰는것을 지양
+    // 이유는 가스(수수료)를 더 소비하기 때문
+    // string public s = "kwak";
+    // uint public uu = 10;
+
+    // function getSol() public view{
+    //     // 2. 지역변수(local)
+    //     //  함수 안에서 선언, 블록체인에 기록되지 않음
+    //     uint a = 20;
+
+    //     // 3. 전역변수(global)
+    //     //  블록체인에 관한 정보를 제공
+    //     uint timestamp = block.timestamp;
+    //     address sender = msg.sender;
+    // }
+
+    // 상수(constants)
+    // constants라는 키워드로 코딩된 값은
+    //  가스 비용을 절약시켜줌
+    // 상수명은 대문자가 국룰
+    // string public constant MY_ADDRESS = "afafarqwrq";
+    // uint public constant MY_UINT = 123;
+
+    // 불변(Immutable)
+    // Immutable변수는 생성자 안에 선언될 수 있는데
+    //  값이 수정될 수는 없음
+    // uint public immutable MY_UINT;
+
+
+    // //파라미터로 사용하는 변수명
+    // // _로 시작하는게 국룰
+    // constructor(uint _myUint){
+    //     MY_UINT = _myUint;
+    // }
+
+    //자료형 (data type)
+    //  솔리디티의 자료형은 크게 두가지 타입임
+    //      값 타입(Value type)
+    //      참조 타입(Reference type)
+
+    //값타입 : 값이 할당되거나 함수의 파라미터로 활용이
+    //          되면 해당 값 자체가 복사
+
+    //참조타입 : 현재 해당하는 값의 주소만 복사
+    //  즉, 참조형 타입의 특징은 데이터를 어디에 저장할지
+    //      명시해야 한다는 것
+    // 참조형은 배열(Array), 매핑(Mapping),
+    // 구조체(Struct)로 구성
+
+    //값 타입(value type)
+    // 논리타입 : bool
+    // 정수(integer)타입 : uint, int
+    // 부호없는 정수로는 uint, uint8, uint16, uint32...
+    //  uint256 = uint
+    // 부호있는 정수는 말그대로 음수값 => int
+    // (int는 기호가 있는 Integer
+    //  uint는 기호가 없는 Integer)
+
+    //실수타입(fixed point number)
+    // : fixed or ufixed 
+    //  부호가 있는 실수 or 부호가 없는 실수
+
+    //바이트 타입(byte type)
+    // bytes -> byte1 ~ byte32 까지 존재
+    //  뒤에 붙어있는 숫자에 따라 byte의 크기가 정해짐
+    //  문자의 byte의 크기를 안다면
+    //    크기에 맞게 자료형을 지정하는 것이 좋음
+
+    //문자열 타입(string)
+    //  *솔리디티에서는 문자열타입 사용을 지양
+    //   가스를 더 소비하게 됨
+    //      GAS는 돈이라고 생각하면 됨
+    // 솔리디티 ) string을 받으면 byte로 변환시켜서 이해함
+    //  반대로 byte를 string으로 변화시켜서 꺼내줌
+    // string과 byte를 왔다갔다 하면서 가스 소비하는것 보다
+    //  byte만 받아서 사용하면 가스를 아낄 수 있고
+    //  솔리디티입장에서는 더 편함
+
+    // 주소타입(address)
+    //  은행의 계좌번호 같은 개념
+    //  계정의 주소, 주소형 타입의 크기는 20bytes로 지정
+    //  유저의 고유 아이디 or 배포된 스마트 컨트랙트의 아이디
+    //  이 주소를 통해서 암호화폐(디지털코인),
+    //      스마트 컨트랙트를 주고 받을 수 있음
+
+    //참조타입(Reference type)
+    //  1. 매핑(Mapping)
+    //   JS의 Object와 같이 Key, Value의 형태로 저장
+    //   mapping (key => value)가시성 지정자 매핑명으로 정의
+    //   key type에는 모든 기본값(정수 등), 
+    //      bytes, string, 컨트랙트등이 들어갈수 있음
+    //   value type에는 다른 매핑과 배열을 포함한 모든 유형
+    //      ex) 각 유저의 토큰 잔액을 나타내는 것을 매핑으로 구현
+
+    mapping (address => uint) public myAddress;
+
+    //매핑에 키와 값을 추가하기
+    //파라미터명은 _를 맨앞에 써주는게 국룰
+    function addMapping(address _key, uint _val) public{
+        myAddress[_key] = _val;
+    }
+
+    //추가한 매핑 값 가져오기
+    function getMapping(address _key) public view returns(uint){
+        return myAddress[_key];
+    }
+
+    //매핑지우기
+    function deleteMapping(address _key ) public{
+        delete(myAddress[_key]);
+    }
+}

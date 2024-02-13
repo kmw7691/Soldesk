@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3.js</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/web3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Web3.js</h1>
+        <h2>
+            Etherium 블록체인과 상호작용을 하기 위한
+            JavaScript의 라이브러리
+        </h2>
+
+        <label for="name" class="col-lg-2 control-label">
+            <h3>Node Info</h3>
+        </label>
+        <input id="NodeInfo" type="text">
+
+        <hr>
+
+        <label for="name" class="col-lg-2 control-label">
+            <h3>Balance</h3>
+        </label>
+        <p>Account : <input id="Account" type="text"></p>
+        <p>Balance : <input id="Balance" type="text"></p>
+        <button id="checkBalance">Check Balance</button>
+
+        <hr>
+
+        <label for="name" class="col-lg-2 control-label">
+            <h3>Transfer</h3>
+        </label>
+        <p>
+            From: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="From" type="text">
+        </p>
+        <p>
+            To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="To" type="text">
+        </p><p>
+            Amount: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="Amount" type="text">
+        </p>
+        <button id="Transfer">Transfer</button>
+        <p>
+            Transaction Hash : &nbsp;
+            <span id="Tx"></span>
+        </p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+    <script>
+        $(document).ready(()=>{
+            console.log("Ready!");
+
+            if(typeof web3 !== 'undefined'){
+                web3 = new Web3(web3.currentProvider);
+            }else{
+                web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+            }
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+
+            //Node정보 가져오기
+            web3.eth.getNodeInfo((error, result)=>{
+                if(error){
+                    console.log("error", error);
+                }else{
+                    console.log("result", result);
+                    $('#NodeInfo').val(result);
+                }
+            });
+
+            //잔고가져오기
+            web3.eth.getAccounts((error,accounts)=>{
+                if(error){
+                    console.log(error);
+                }
+                $('#Account').val(accounts[0]);
+                web3.eth.getBalance(accounts[0]).then((result)=>{
+                    console.log("Balance : ", web3.utils.fromWei(result,'ether'));
+                });
+            });
+
+            $('#checkBalance').click(()=>{
+                var _account = $('#Account').val();
+                web3.eth.getBalance(_account).then((result)=>{
+                    console.log("Balance : ", web3.utils.fromWei(result, 'ether'));
+                    $('#Balance').val(web3.utils.fromWei(result, 'ether'));
+                });
+            });
+
+            //ETH전송
+            $('#Transfer').click(()=>{
+                var _from = $('#From').val();
+                var _to = $('#To').val();
+                var _Amount = $('#Amount').val();
+                var txnObject = {
+                    "from" : _from,
+                    "to" : _to,
+                    "value" : web3.utils.toWei(_Amount,'ether'),
+                }
+
+                web3.eth.sendTransaction(txnObject,(error,result)=>{
+                    if(error){
+                        console.log("Transaction Error", error);
+                    }else{
+                        var txn_hash = result;
+                        $('#Tx').text(txn_hash);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
