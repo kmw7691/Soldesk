@@ -1,0 +1,15 @@
+gutenberg.org
+	원하는소설 찾아서 텍스트 utf-8저장
+
+그 텍스트파일을 NN의 알드라이브로 옮기기
+
+NN] ~/hadoop/hadoop-3.3.3
+
+NN의 HDD에 잘들어갔나 확인 : ls
+
+HDFS확인
+	bin/hadoop fs -ls /
+
+HDFS로 파일 업로드
+	bin/hadoop fs -put 파일명.확장자 HDFS경로
+	bin/hadoop fs -put Book.txt /

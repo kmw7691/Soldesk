@@ -1,0 +1,29 @@
+[전부 다]
+	Hadoop설정 잘 되어있나 확인
+---------------------------------------------------------------------
+
+Hadoop실행 전에
+
+1. 찌꺼기폴더 삭제	
+	전부다 ] rm -rf ~/hadoopTmpData
+
+2. 하둡 폴더로 이동
+	NN만]
+		cd ~/hadoop/hadoop-3.3.3
+
+3. 하둡시스템 포맷
+	NN만]
+		bin/hadoop namenode -format
+		bin/hadoop datanode -format
+
+4.시작
+	NN만]
+		sbin/start-all.sh
+
+5.확인
+	전부다]
+		jps >> 확인
+
+6.끄기
+	NN만]
+		sbin/stop-all.sh

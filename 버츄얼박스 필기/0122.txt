@@ -1,0 +1,18 @@
+새롭게만든폴더에 메모장 파일을 복사ㄱ
+
+test폴더를 test.tar.gz로 아카이빙 + 압축
+	tar cvzf test.tar.gz test
+
+압축해제
+	tar xvzf test.tar.gz
+-------------------------------------------
+
+zip으로 압축
+	zip -r 파일명 압축할 파일명
+
+	zip -r test.zip test
+
+	
+zip 압축해제
+	unzip 파일명
+	unzip test.zip
