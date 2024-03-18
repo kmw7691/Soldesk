@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static "css/header.css" %}?after" />
+    <link rel="stylesheet" href="{% static "css/index.css" %}?ver=1" />
+    <link rel="stylesheet" href="{% static "css/error.css" %}?ver=1" />
+    <link rel="stylesheet" href="{% static "css/footer.css" %}?ver=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "/favicon/favicon-32x32.png" %}">
+    <title>LoTiCal</title>
+  </head>
+  <body>
+    <header>{%include "includes/header.html"%}</header>
+
+    <h1 id="title">오류! 아래 두버튼중 하나를 선택해주세요!</h1>
+
+    <div class="button">
+      <div class="buttons">
+        <button onclick="goHome()">
+          <div class="buttona">
+            <div><h3>To HOME</h3></div>
+          </div>
+        </button>
+        <button onclick="goBack()">
+          <div class="buttona"><h3>뒤로가기</h3></div>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function goHome() {
+        location.href = "/";
+      }
+      function goBack() {
+        window.history.back();
+      }
+
+      window.onload = function () {
+        document.cookie =
+          "opts=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      };
+    </script>
+
+    <footer>{%include "includes/footer.html"%}</footer>
+  </body>
+</html>
